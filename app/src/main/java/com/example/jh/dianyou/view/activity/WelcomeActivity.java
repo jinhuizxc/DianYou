@@ -9,6 +9,7 @@ import com.example.jh.dianyou.R;
 /**
  * Created by Administrator on 2017/9/25.
  * 从今天起开始项目重新学习！
+ * 目前形势严峻，需要重新出发，把这个项目做完可以考虑转型！
  */
 
 public class WelcomeActivity extends AppCompatActivity {
