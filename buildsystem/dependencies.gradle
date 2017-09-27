@@ -1,0 +1,17 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+
+ext {
+
+    gsonVersion = '2.8.2'
+
+
+    presentationDependencies = [
+            gson: "com.google.code.gson:gson:${gsonVersion}",
+    ]
+
+}

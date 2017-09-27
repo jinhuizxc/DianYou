@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_cloud"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".features.login.LoginActivity">
+
+    <include layout="@layout/toolbar" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/actvLoginUsername"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/background_in"
+            android:hint="@string/et_login_username"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/tv_gray"
+            android:textSize="@dimen/tv_mid" />
+
+        <EditText
+            android:id="@+id/etLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/actvLoginUsername"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/background_in"
+            android:hint="@string/et_login_password"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/tv_gray"
+            android:textSize="@dimen/tv_mid" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/etLoginPassword"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/background_corners"
+            android:text="@string/title_login"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_mid" />
+
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btn_login"
+            android:layout_alignTop="@+id/tv_forgetpasswprd"
+            android:padding="@dimen/tv_little"
+            android:text="@string/title_register"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_mid" />
+
+        <TextView
+            android:id="@+id/tv_forgetpasswprd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btn_login"
+            android:layout_below="@+id/btn_login"
+            android:layout_marginTop="15dp"
+            android:padding="@dimen/tv_little"
+            android:text="@string/title_forgetpassword"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_mid" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

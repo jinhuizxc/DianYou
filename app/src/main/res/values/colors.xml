@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <!--设置颜色-->
+    <color name="colorPrimary">#2dc6ff</color>
+    <color name="colorPrimaryDark">#2dc6ff</color>//状态栏
+    <color name="colorAccent">#2dc6ff</color>
+
+    <color name="colorBg">#b5effb</color>
+    <color name="colorBg_desc">#dff0f3</color>
+    <color name="colorBg_tab">#f9f9f9</color>
+
+    <color name="touming">#00FFFFFF</color>
+    <color name="lightgrey">#ff888888</color>
+    <color name="black">#ff000000</color>
+    <color name="red">#f90303</color>
+    <color name="distub_date">#a2e753</color>
+    <color name="tv_call">#7daf7e</color>
+    <color name="tv_record">#698aeb</color>
+    <color name="tv_talk">#e8659d</color>
+    <color name="tv_goout">#4b9cff</color>
+    <color name="tv_manager">#ff9744</color>
+
+    <color name="tv_tab">#6a6b6b</color>
+    <!--<color name="line">#e6e6e6</color>-->
+    <color name="line">#a1a1a1</color>
+    <color name="tv_gray">#a1a1a1</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="alpha">#50ffffff</color>
+
+    <color name="tv_ashen">#6d6d6d</color>
+    <color name="maillist1">#AAFFFFFF</color>
+    <color name="maillist2">#50ffffff</color>
+
+    <color name="pickerview_timebtn_nor">#057dff</color>
+    <color name="pickerview_timebtn_pre">#c2daf5</color>
+    <color name="pickerview_bg_topbar">#f5f5f5</color>
+
+    <color name="pickerview_topbar_title">#000000</color>
+    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
+    <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
+    <color name="pickerview_wheelview_textcolor_divider">#d5d5d5</color>
+    <color name="pickerview_bgColor_overlay">#60000000</color>
+    <color name="pickerview_bgColor_default">#FFFFFFFF</color>
+
+    <color name="dark_green">#60a104</color>
+    <color name="orange">#e49100</color>
 </resources>
