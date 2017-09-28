@@ -35,5 +35,8 @@ public class LoginPresenter extends YaRxPresenter<LoginView> {
     }
 
 
+    public void attemptLogin() {
 
+        getView().goToMain();
+    }
 }

@@ -19,6 +19,8 @@ package com.example.jh.dianyou.features.login;
 import com.example.jh.data.PerActivity;
 import com.example.jh.data.user.UserModule;
 import com.example.jh.dianyou.di.modules.ActivityModule;
+import com.example.jh.dianyou.features.password.forget.ForgetPasswordActivity;
+import com.example.jh.dianyou.features.register.RegisterActivity;
 
 import dagger.Subcomponent;
 
@@ -27,7 +29,7 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {ActivityModule.class, UserModule.class})
 public interface UserComponent {
   void inject(LoginActivity loginActivity);
-//  void inject(RegisterActivity registerActivity);
-//  void inject(ForgetPasswordActivity forgetPasswordActivity);
+  void inject(RegisterActivity registerActivity);
+  void inject(ForgetPasswordActivity forgetPasswordActivity);
 //  void inject(ResetPasswordActivity resetPasswordActivity);
 }
