@@ -14,7 +14,6 @@
 
         </activity>
         <activity
-            android:theme="@style/Welcome"
             android:name=".view.activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

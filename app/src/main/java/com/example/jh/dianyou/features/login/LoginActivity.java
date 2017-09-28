@@ -33,6 +33,7 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter, UserC
     @BindView(R.id.tv_forgetpasswprd)
     TextView tvForgetpasswprd;
     Intent intent;
+
     @Override
     protected String getToolbarTitle() {
         return getString(R.string.title_login);

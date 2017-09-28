@@ -20,15 +20,16 @@
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
 
-    <!--欢迎页状态栏-->
-    <style name="Welcome" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
-        <item name="colorControlNormal">@android:color/white</item>
-        <!--<item name="android:homeAsUpIndicator">@drawable/ic_launcher</item>-->
-        <item name="actionMenuTextColor">@android:color/white</item>
-    </style>
+    <!--&lt;!&ndash;4.0 需要这样设置欢迎页状态栏&ndash;&gt;-->
+    <!--<style name="Welcome" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/white</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <!--&lt;!&ndash;<item name="android:textColorPrimary">@android:color/white</item>&ndash;&gt;-->
+        <!--<item name="colorControlNormal">@android:color/white</item>-->
+        <!--&lt;!&ndash;<item name="android:homeAsUpIndicator">@drawable/ic_launcher</item>&ndash;&gt;-->
+        <!--<item name="actionMenuTextColor">@android:color/white</item>-->
+    <!--</style>-->
+
 </resources>

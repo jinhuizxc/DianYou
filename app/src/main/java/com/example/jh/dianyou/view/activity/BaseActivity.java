@@ -95,6 +95,7 @@ public abstract class BaseActivity<V extends YaView, P extends YaPresenter<V>, C
         if (back == null) {
 
         } else {
+            // 返回键的点击事件
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
