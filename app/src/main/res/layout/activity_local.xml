@@ -92,6 +92,36 @@
         android:layout_height="match_parent">
 
 
+        <!--底部草坪-->
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/bg_bottom"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_time"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_mid"
+                tools:text="android" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_mid"
+                tools:text="android" />
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="wrap_content"
@@ -272,6 +302,7 @@
                 android:textSize="@dimen/tv_mid" />
         </FrameLayout>
 
+        <!--设置内部项-->
         <LinearLayout
             android:id="@+id/ll_flow"
             android:layout_width="320dp"
@@ -374,35 +405,6 @@
 
         </LinearLayout>
 
-        <!--底部草坪-->
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@mipmap/bg_bottom"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_time"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_mid"
-                tools:text="android" />
-
-            <TextView
-                android:id="@+id/tv_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_mid"
-                tools:text="android" />
-        </LinearLayout>
     </FrameLayout>
 
 </FrameLayout>

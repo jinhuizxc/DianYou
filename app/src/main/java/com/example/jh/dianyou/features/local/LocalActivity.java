@@ -41,6 +41,9 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/9/26.
  *
  * 定位、数据库 以及  compile 'fm.jiecao:jiecaovideoplayer:4.6.4' 节操视频播放器！
+ *
+ * 获取当前位置，
+ * 获取手表实时位置
  */
 
 public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, LocalComponent> implements LocalView, AMapLocationListener {
@@ -91,7 +94,9 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         map.onCreate(savedInstanceState);// 此方法必须重写
-        initMap();
+        // 位置监听方法
+        mlocationClient.setLocationListener(this);
+        mlocationClient.startLocation();
 
         if (!NotificationManagerCompat.from(LocalActivity.this).areNotificationsEnabled()) {
             T.showShort("请允许通知，否则通知栏无法显示通知");
@@ -116,11 +121,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 
     }
 
-    private void initMap() {
-        // 可以显示地图图层，默认是北京
-        mlocationClient.setLocationListener(this);
-        mlocationClient.startLocation();
-    }
+
 
 
     @Override
@@ -329,22 +330,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
                 break;
 
             case R.id.iv_location:
-                // 调用接口，如果短时间内再按就回到定位的位置
-                if (prelongTime == 0) {//第一次单击，初始化为本次单击的时间
-                    prelongTime = Long.parseLong((new PreferencesUtils()).CreateDate());
-                    Log.e(TAG, "prelongTime = " + prelongTime);
-//                    mPresenter.getDeviceLocation();
-//                    mPresenter.test();
-                } else {
-                    long curTime = Long.parseLong(new PreferencesUtils().CreateDate());//本地单击的时间
-                    //System.out.println("两次单击间隔时间："+(curTime-prelongTime)+"当前时间是："+(curTime)+"第一次点击的时间是："+(prelongTime));//计算本地和上次的时间差
-                    if (curTime - prelongTime <= 600) {
-//                        mPresenter.getLocation();
-                        Log.e(TAG, "prelongTime11111 =" + prelongTime);
-                    } else {
-                        prelongTime = 0;//当前单击事件变为第一次点击的时间
-                    }
-                }
+
                 break;
             case R.id.iv_message:
 //                startActivity(new Intent(LocalActivity.this, MessageActivity.class));
