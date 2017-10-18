@@ -5,9 +5,11 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -37,6 +39,8 @@ import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/9/26.
+ *
+ * 定位、数据库 以及  compile 'fm.jiecao:jiecaovideoplayer:4.6.4' 节操视频播放器！
  */
 
 public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, LocalComponent> implements LocalView, AMapLocationListener {
@@ -53,7 +57,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
     @BindView(R.id.tv_device)
     TextView tvDevice;
 
-    // 设备listview
+    // 设备Listview
     ListView lvDevice;
     //    @Inject
 //    DeviceListAdapter adapter;
@@ -83,14 +87,39 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local);
+        super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-
         map.onCreate(savedInstanceState);// 此方法必须重写
+        initMap();
+
+        if (!NotificationManagerCompat.from(LocalActivity.this).areNotificationsEnabled()) {
+            T.showShort("请允许通知，否则通知栏无法显示通知");
+        }
+
+        String token = PreferencesUtils.getString(this, "Token");
+        if (token != null){
+            Log.e(TAG, "token =" + token);
+            System.out.println("token=" + token);
+        }
+        // 标题置为字体格式
+        Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/mini.TTF");
+        tvDevice.setTypeface(typeFace);
+        // 设备列表
+        View vPopupWindow = View.inflate(LocalActivity.this, R.layout.view_adddevice, null);
+        lvDevice = (ListView) vPopupWindow.findViewById(R.id.lv_device);
+        // 配置适配器——需要用到数据库来保存
+        setupRecyclerView();
+    }
+
+    private void setupRecyclerView() {
+
+    }
+
+    private void initMap() {
+        // 可以显示地图图层，默认是北京
         mlocationClient.setLocationListener(this);
         mlocationClient.startLocation();
-
     }
 
 

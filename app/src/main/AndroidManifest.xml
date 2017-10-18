@@ -2,6 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jh.dianyou">
 
+    <!--高德地图权限-->
+    //地图包、搜索包需要的基础权限
+    <!--用于访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--用于写入缓存数据到扩展存储卡-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    //定位包、导航包需要的额外权限（注：基础权限也需要）
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
     <application
         android:name=".AndroidApplication"
         android:allowBackup="true"
@@ -30,6 +57,13 @@
         <activity android:name=".features.password.forget.ForgetPasswordActivity"/>
         <activity android:name=".features.history.HistoryActivity"/>
         <activity android:name=".features.mine.my.MineActivity"/>
+        // 加载地图key  4ab1844246c5af3c87d8598bf9e6cdbc
+        <!-- 定位 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="4ab1844246c5af3c87d8598bf9e6cdbc" />
+        <!-- 定位需要的服务 -->
+        <service android:name="com.amap.api.location.APSService" />
     </application>
 
 </manifest>
