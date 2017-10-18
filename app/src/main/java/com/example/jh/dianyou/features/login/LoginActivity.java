@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jh.dianyou.AndroidApplication;
 import com.example.jh.dianyou.R;
 import com.example.jh.dianyou.features.local.LocalActivity;
 import com.example.jh.dianyou.features.password.forget.ForgetPasswordActivity;
 import com.example.jh.dianyou.features.register.RegisterActivity;
+import com.example.jh.dianyou.utils.T;
 import com.example.jh.dianyou.view.activity.BaseActivity;
 
 import butterknife.BindView;
@@ -64,17 +66,17 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter, UserC
 
     @Override
     public String getUsername() {
-        return null;
+        return actvLoginUsername.getText().toString();
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return etLoginPassword.getText().toString();
     }
 
     @Override
     public void showResult(String result) {
-
+        Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -86,22 +88,27 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter, UserC
 
     @Override
     public void showUsernameError(String message) {
-
+        T.showShort(message);
+        actvLoginUsername.requestFocus();
     }
 
     @Override
     public void showPasswordError(String message) {
-
+        T.showShort(message);
+//        etLoginPassword.setError(message);
+        actvLoginUsername.requestFocus();
     }
 
     @Override
     public void cleanError() {
-
+        actvLoginUsername.setError(null);
+        etLoginPassword.setError(null);
     }
 
     @Override
     public void clearData() {
-
+        actvLoginUsername.setText("");
+        etLoginPassword.setText("");
     }
 
     @Override

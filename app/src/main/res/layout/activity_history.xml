@@ -1,0 +1,97 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@mipmap/bg_cloud"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <include layout="@layout/toolbar" />
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:elevation="2dp">
+            <LinearLayout
+                android:id="@+id/tv_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:padding="6dp"
+                    android:text="@string/desc_select_date" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@mipmap/next"
+                    />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_next"
+                style="@style/history_buttonStyle"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginBottom="20px"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:layout_marginTop="20px"
+                android:text="后一天"
+                android:textSize="@dimen/tv_little" />
+            <Button
+                android:id="@+id/btn_previous"
+                style="@style/history_buttonStyle"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="20px"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:layout_marginTop="20px"
+                android:text="前一天"
+                android:textSize="@dimen/tv_little" />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <com.amap.api.maps2d.MapView
+                android:id="@+id/map"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/tv_time_bar"
+                android:layout_width="78dp"
+                android:layout_height="60dp"
+                android:layout_above="@+id/seek_bar1"
+                android:layout_gravity="bottom"
+                android:background="@mipmap/tv_time_bar_bg"
+                android:gravity="center"
+                android:text="123"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_little" />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bar_height"
+            android:layout_gravity="bottom"
+            android:background="@color/colorBg_tab">
+            <SeekBar
+                android:id="@+id/seek_bar1"
+                style="@style/seekBar_style1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

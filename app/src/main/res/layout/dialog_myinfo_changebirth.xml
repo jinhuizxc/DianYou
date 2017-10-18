@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_myinfo_changeaddress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/ly_myinfo_changeaddress_child"
+        style="@style/DateDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popu_bg"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/wheelview"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <com.example.jh.dianyou.features.history.wheelview.WheelView
+                android:id="@+id/wv_birth_year"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2" />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                style="@style/parentText_style"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/pickerview_year" />
+            <com.example.jh.dianyou.features.history.wheelview.WheelView
+                android:id="@+id/wv_birth_month"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2" />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                style="@style/parentText_style"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/pickerview_month" />
+            <com.example.jh.dianyou.features.history.wheelview.WheelView
+                android:id="@+id/wv_birth_day"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2" />
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                style="@style/parentText_style"
+                android:layout_weight="1"
+                android:text="@string/pickerview_day"
+                android:gravity="center"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@+id/wheelview">
+            <TextView
+                android:id="@+id/btn_myinfo_cancel"
+                style="@style/text_style3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="15dip"
+                android:gravity="center"
+                android:paddingLeft="12dp"
+                android:text="取消"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/btn_myinfo_sure"
+                style="@style/text_style4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:paddingRight="12dp"
+                android:text="确定"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

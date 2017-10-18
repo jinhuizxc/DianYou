@@ -1,6 +1,7 @@
 package com.example.jh.dianyou;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.jh.dianyou.di.components.ApplicationComponent;
 import com.example.jh.dianyou.di.components.DaggerApplicationComponent;
@@ -14,13 +15,27 @@ public class AndroidApplication extends Application {
 
     private ApplicationComponent applicationComponent;
     private static AndroidApplication mApplication;
+    private static Context appContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
         // 初始化注入器
         this.initializeInjector();
+
+
+        mApplication = this;
+        appContext = getApplicationContext();
     }
+
+    public AndroidApplication() {
+        mApplication = this;
+    }
+
+    public static Context getAppContext() {
+        return appContext;
+    }
+
 
     private void initializeInjector() {
         this.applicationComponent = DaggerApplicationComponent.builder()
@@ -42,4 +57,6 @@ public class AndroidApplication extends Application {
             return mApplication;
         }
     }
+
+
 }

@@ -9,6 +9,7 @@
         android:background="@mipmap/bg"
         android:orientation="vertical">
 
+        <!--顶部 title-->
         <FrameLayout
             android:id="@+id/fl_toolbar"
             android:layout_width="match_parent"
@@ -35,15 +36,16 @@
 
         </FrameLayout>
 
+        <!--地图图层-->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <!--<com.amap.api.maps2d.MapView-->
-                <!--android:id="@+id/map"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent" />-->
+            <com.amap.api.maps2d.MapView
+                android:id="@+id/map"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
 
             <ImageView
                 android:id="@+id/iv_power"
@@ -83,40 +85,12 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!--具体项-->
     <FrameLayout
         android:id="@+id/cl_float"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@mipmap/bg_bottom"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_time"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_mid"
-                tools:text="android" />
-
-            <TextView
-                android:id="@+id/tv_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_mid"
-                tools:text="android" />
-        </LinearLayout>
 
         <ImageView
             android:id="@+id/imageView9"
@@ -398,8 +372,37 @@
                     android:textSize="@dimen/tv_mid" />
             </FrameLayout>
 
-
         </LinearLayout>
 
+        <!--底部草坪-->
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/bg_bottom"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_time"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_mid"
+                tools:text="android" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_mid"
+                tools:text="android" />
+        </LinearLayout>
     </FrameLayout>
+
 </FrameLayout>

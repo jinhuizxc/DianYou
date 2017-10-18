@@ -21,7 +21,7 @@ import com.example.jh.data.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
-//import retrofit2.Retrofit;
+import retrofit2.Retrofit;
 
 /**
  * Dagger module that provides user related collaborators.
@@ -29,12 +29,12 @@ import dagger.Provides;
 @Module
 public class UserModule {
 
-//  @PerActivity
-//  @Provides
-//  UserApi provideUserApi(final Retrofit retrofit) {
-//    return retrofit.create(UserApi.class);
-//  }
-//
+  @PerActivity
+  @Provides
+  UserApi provideUserApi(final Retrofit retrofit) {
+    return retrofit.create(UserApi.class);
+  }
+
 //  @PerActivity
 //  @Provides
 //  UserDelegate provideUserDelegate(final UserDelegateImpl userDelegate) {

@@ -22,11 +22,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-//    // 配置java版本1.8
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
+
 }
 
 dependencies {
@@ -50,16 +46,17 @@ dependencies {
     // rxjava
     compile 'io.reactivex:rxjava:1.3.2'
     compile 'io.reactivex:rxandroid:1.2.1'
-//    // 基础auto-value
-//    provided 'com.google.auto.value:auto-value:1.5.1'
-//    apt 'com.google.auto.value:auto-value:1.5.1'
-//    // AutoValue的扩展，为每个AutoValue注释对象创建一个简单的Gson TypeAdapterFactory。
-//    // https://github.com/rharter/auto-value-gson
-//    apt 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
-//    provided 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
+    //    // 基础auto-value
+    //    provided 'com.google.auto.value:auto-value:1.5.1'
+    //    apt 'com.google.auto.value:auto-value:1.5.1'
+    //    // AutoValue的扩展，为每个AutoValue注释对象创建一个简单的Gson TypeAdapterFactory。
+    //    // https://github.com/rharter/auto-value-gson
+    //    apt 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
+    //    provided 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
     // 数据库sqlbrite
     compile 'com.squareup.sqlbrite:sqlbrite:1.1.2'
     compile 'com.jakewharton.timber:timber:4.5.1'
     // gson
     compile 'com.google.code.gson:gson:2.8.2'
+
 }

@@ -20,7 +20,10 @@ package com.example.jh.dianyou.di.components;
 import com.example.jh.dianyou.di.modules.ActivityModule;
 import com.example.jh.dianyou.di.modules.ApplicationModule;
 import com.example.jh.dianyou.di.modules.ProviderModule;
+import com.example.jh.dianyou.features.history.HistoryComponent;
+import com.example.jh.dianyou.features.local.LocalComponent;
 import com.example.jh.dianyou.features.login.UserComponent;
+import com.example.jh.dianyou.features.mine.my.MineComponent;
 
 import javax.inject.Singleton;
 
@@ -34,4 +37,9 @@ import dagger.Component;
 public interface ApplicationComponent {
     UserComponent userComponent(ActivityModule activityModule);
 
+    LocalComponent localComponent(ActivityModule activityModule);
+
+    MineComponent mineComponent(ActivityModule activityModule);
+
+    HistoryComponent historyComponent(ActivityModule activityModule);
 }

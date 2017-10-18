@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bar_height"
+                android:layout_marginTop="16dp"
+                android:background="@color/touming"
+                android:elevation="5dp">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="18dp"
+                    android:padding="5dp"
+                    android:src="@drawable/selector_back" />
+
+
+                <ImageView
+                    android:id="@+id/iv_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="18dp"
+                    android:padding="5dp"
+                    android:src="@drawable/selector_setting" />
+            </FrameLayout>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:background="@color/touming"
+                android:elevation="5dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_touxinag"
+                    android:layout_marginLeft="16dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="12dp" />
+
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/str_username"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid"
+                    android:visibility="invisible"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_photo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_conversion_absoluteHeight="23dp"
+                    tools:layout_conversion_absoluteWidth="45dp"
+                    tools:layout_conversion_absoluteX="137dp"
+                    tools:layout_conversion_absoluteY="23dp" />
+
+                <TextView
+                    android:id="@+id/tv_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="XX"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid"
+                    android:visibility="invisible"
+                    app:layout_constraintLeft_toRightOf="@+id/textView13"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_conversion_absoluteHeight="23dp"
+                    tools:layout_conversion_absoluteWidth="25dp"
+                    tools:layout_conversion_absoluteX="182dp"
+                    tools:layout_conversion_absoluteY="23dp" />
+
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/str_nicheng"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid"
+                    android:visibility="invisible"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_photo"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    tools:layout_conversion_absoluteHeight="23dp"
+                    tools:layout_conversion_absoluteWidth="31dp"
+                    tools:layout_conversion_absoluteX="137dp"
+                    tools:layout_conversion_absoluteY="47dp" />
+
+                <TextView
+                    android:id="@+id/tv_nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="某某某"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_little"
+                    android:visibility="visible"
+                    app:layout_constraintLeft_toRightOf="@+id/textView11"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_login"
+                    tools:layout_conversion_absoluteHeight="23dp"
+                    tools:layout_conversion_absoluteWidth="60dp"
+                    tools:layout_conversion_absoluteX="168dp"
+                    tools:layout_conversion_absoluteY="47dp" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp"
+                    android:layout_marginLeft="18dp"
+
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:id="@+id/ll_devicelist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/ic_devicelist" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="设备列表"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_min" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_marginLeft="11dp"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp"
+                    android:visibility="invisible"
+                    android:layout_weight="1">
+                    <LinearLayout
+
+                        android:id="@+id/ll_topUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/ic_recharge" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="充值续费"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_min" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginLeft="11dp"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp"
+                    android:visibility="invisible"
+                    android:layout_weight="1">
+                    <LinearLayout
+                        android:id="@+id/ll_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/ic_flexible" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="活动"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_min" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+</RelativeLayout>

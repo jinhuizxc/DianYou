@@ -28,6 +28,8 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".features.register.RegisterActivity"/>
         <activity android:name=".features.password.forget.ForgetPasswordActivity"/>
+        <activity android:name=".features.history.HistoryActivity"/>
+        <activity android:name=".features.mine.my.MineActivity"/>
     </application>
 
 </manifest>

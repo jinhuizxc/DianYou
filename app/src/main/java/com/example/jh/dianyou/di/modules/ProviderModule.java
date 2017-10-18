@@ -2,6 +2,8 @@ package com.example.jh.dianyou.di.modules;
 
 import android.content.Context;
 
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
 import com.example.jh.dianyou.BuildConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,4 +34,21 @@ public class ProviderModule {
     }
 
 
+    @Singleton
+    @Provides
+    AMapLocationClient provideAMapLocationClient(Context context, AMapLocationClientOption mLocationOption) {
+        AMapLocationClient mlocationClient = new AMapLocationClient(context);
+        mlocationClient.setLocationOption(mLocationOption);
+        return mlocationClient;
+    }
+
+    @Singleton
+    @Provides
+    AMapLocationClientOption providAMapLocationClientOption() {
+        AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        mLocationOption.setOnceLocation(true);
+
+        return mLocationOption;
+    }
 }
