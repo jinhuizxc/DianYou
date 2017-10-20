@@ -1,0 +1,185 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_cloud"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="10dp"
+        android:elevation="5dp">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="名称："
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_little"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:text="地址："
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_little"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:text="设备："
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_little"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+        <EditText
+            android:id="@+id/edit_device"
+            style="@style/edittext_style"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="15dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:paddingBottom="14dp"
+            android:paddingLeft="11dp"
+            android:paddingTop="14dp"
+            android:textColor="@color/line"
+            android:textSize="@dimen/tv_min"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toRightOf="@+id/textView3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+        <EditText
+            android:id="@+id/edit_name"
+            style="@style/edittext_style"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="22dp"
+            android:paddingBottom="14dp"
+            android:paddingLeft="11dp"
+            android:paddingTop="14dp"
+            android:singleLine="false"
+            android:textColor="@color/line"
+            android:textSize="@dimen/tv_min"
+            app:layout_constraintLeft_toRightOf="@+id/textView1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/tv_address"
+            style="@style/edittext_style"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="14dp"
+            android:paddingLeft="11dp"
+            android:paddingTop="14dp"
+            android:textColor="@color/line"
+            android:textSize="@dimen/tv_min"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/textView2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_name" />
+
+        <SeekBar
+            android:id="@+id/seek_bar"
+            style="@style/seekBar_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_distance"
+            app:layout_constraintTop_toBottomOf="@+id/edit_device" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="18dp"
+            android:text="500米"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_mid"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_device" />
+
+        <ImageView
+            android:id="@+id/iv_add_device"
+            android:layout_width="10dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="13dp"
+            android:src="@mipmap/btn_right"
+            app:layout_constraintRight_toRightOf="@+id/edit_device"
+            app:layout_constraintTop_toTopOf="@+id/edit_device" />
+    </android.support.constraint.ConstraintLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1">
+
+        <com.amap.api.maps2d.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/iv_location_device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="48dp"
+            android:layout_marginLeft="18dp"
+            android:src="@mipmap/ic_location_device" />
+
+        <ImageView
+            android:id="@+id/iv_location_self"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="8dp"
+            android:src="@mipmap/ic_location_self" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@mipmap/btn_save_safety"
+        android:elevation="10dp"
+        android:paddingBottom="13dp"
+        android:paddingLeft="132dp"
+        android:paddingRight="132dp"
+        android:paddingTop="13dp"
+        android:text="保存安全区域"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_little" />
+
+</LinearLayout>

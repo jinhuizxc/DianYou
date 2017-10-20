@@ -64,6 +64,10 @@
             android:value="4ab1844246c5af3c87d8598bf9e6cdbc" />
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".features.fencelist.FenceListActivity"/>
+        <activity android:name=".features.fencelist.fence.FenceActivity"/>
+
     </application>
 
 </manifest>

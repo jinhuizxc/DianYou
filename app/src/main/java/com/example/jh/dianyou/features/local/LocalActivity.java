@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps2d.MapView;
 import com.example.jh.dianyou.AndroidApplication;
 import com.example.jh.dianyou.R;
+import com.example.jh.dianyou.features.fencelist.FenceListActivity;
 import com.example.jh.dianyou.features.history.HistoryActivity;
 import com.example.jh.dianyou.features.mine.my.MineActivity;
 import com.example.jh.dianyou.utils.PreferencesUtils;
@@ -305,7 +307,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
                 startActivity(new Intent(LocalActivity.this, HistoryActivity.class));
                 break;
             case R.id.iv_fence:
-//                startActivity(new Intent(LocalActivity.this, FenceListActivity.class));
+                startActivity(new Intent(LocalActivity.this, FenceListActivity.class));
                 break;
             case R.id.iv_record:
 //                mPresenter.record();
@@ -330,7 +332,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
                 break;
 
             case R.id.iv_location:
-
+                mPresenter.getDeviceLocation();
                 break;
             case R.id.iv_message:
 //                startActivity(new Intent(LocalActivity.this, MessageActivity.class));
@@ -346,5 +348,24 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 //                startActivity(new Intent(LocalActivity.this, ReadingBookActivity.class));
                 break;
         }
+    }
+
+
+    long waitTime = 2000;
+    long touchTime = 0;
+    // 再按一次退出应用
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN && KeyEvent.KEYCODE_BACK == keyCode) {
+            long currentTime = System.currentTimeMillis();
+            if ((currentTime - touchTime) >= waitTime) {
+                T.showShort(getString(R.string.tip_exit));
+                touchTime = currentTime;
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

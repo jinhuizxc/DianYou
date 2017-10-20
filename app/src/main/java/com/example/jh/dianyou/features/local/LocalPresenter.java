@@ -29,4 +29,7 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
     }
 
 
+    public void getDeviceLocation() {
+
+    }
 }

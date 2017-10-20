@@ -48,7 +48,6 @@ public class ProviderModule {
         AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
         mLocationOption.setOnceLocation(true);
-
         return mLocationOption;
     }
 }

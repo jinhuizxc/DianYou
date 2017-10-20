@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.example.jh.base.YaRxPresenter;
 import com.example.jh.data.Constants;
 import com.example.jh.data.PerActivity;
+import com.example.jh.data.ProgressSubscriber;
 import com.example.jh.data.SubscriberOnNextListener;
 import com.example.jh.data.entity.BlankEntity;
 import com.example.jh.data.user.TokenEntity;

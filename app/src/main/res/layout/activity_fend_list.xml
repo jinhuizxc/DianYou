@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_cloud"
+    tools:context=".features.fencelist.FenceListActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginRight="43dp"
+        android:layout_marginTop="94dp"
+        android:background="@mipmap/fend_all_bg"
+        android:paddingBottom="27dp"
+        android:paddingTop="27dp" />
+
+    <TextView
+        android:id="@+id/tv_fend_safety_zone"
+        android:layout_width="184dp"
+        android:layout_height="64dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="88dp"
+        android:layout_marginTop="57dp"
+        android:background="@mipmap/fend_safety_zone"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:text="@string/fend_safety_zone"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_large" />
+
+    <Button
+        android:id="@+id/btn_add_safety_zone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="33dp"
+        android:layout_marginLeft="57dp"
+        android:layout_marginRight="57dp"
+        android:background="@drawable/selector_unbind"
+        android:paddingBottom="15dp"
+        android:paddingLeft="67dp"
+        android:paddingRight="67dp"
+        android:paddingTop="15dp"
+        android:text="@string/fend_add_safety_zone"
+        android:textSize="@dimen/tv_mid" />
+
+</RelativeLayout>
