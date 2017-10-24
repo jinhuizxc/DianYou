@@ -10,7 +10,6 @@ import java.util.List;
  * Created by jinhui on 2017/10/20.
  * Email：1004260403@qq.com
  */
-
 public interface FenceView extends LoadDataView {
 
     void showFenceName(String name);

@@ -1,7 +1,9 @@
 package com.example.jh.dianyou.features.fencelist.fence;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,7 +14,10 @@ import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.CameraPosition;
+import com.amap.api.maps2d.model.Circle;
+import com.amap.api.maps2d.model.CircleOptions;
 import com.amap.api.maps2d.model.LatLng;
+import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
 import com.example.jh.data.device.DeviceEntity;
 import com.example.jh.data.fence.FenceEntity;
@@ -29,12 +34,14 @@ import butterknife.OnClick;
 /**
  * Created by jinhui on 2017/10/20.
  * Email：1004260403@qq.com
+ *
  * 项目安全区域出现bug急需解决！
  */
 
 public class FenceActivity extends BaseActivity<FenceView, FencePresenter, FenceComponent> implements FenceView {
 
 
+    private static final String TAG = FenceActivity.class.getSimpleName();
     @BindView(R.id.map)
     MapView map;
     @BindView(R.id.seek_bar)
@@ -49,6 +56,8 @@ public class FenceActivity extends BaseActivity<FenceView, FencePresenter, Fence
     Button btnSave;
 
     private AMap aMap;
+    Marker marker;
+    Circle circle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +67,28 @@ public class FenceActivity extends BaseActivity<FenceView, FencePresenter, Fence
         map.onCreate(savedInstanceState);
         // 初始化地图对象
         init();
+        seekBar.setMax(1000);
+        // 地图图层点击监听
+        aMap.setOnMapClickListener(new AMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                if (marker != null) {
+                    marker.destroy();
+                }
+                // 保证只有一个circle
+                aMap.clear();
+                circle = aMap.addCircle(new CircleOptions().center(latLng).radius(1000)
+                        .strokeColor(
+                                Color.TRANSPARENT)
+                        .fillColor(Color.parseColor("#5555bce5")));
+
+                marker = aMap.addMarker(new MarkerOptions().position(latLng).icon(
+                        BitmapDescriptorFactory
+                                .fromResource(R.mipmap.ic_marker_safe)).title("中心").draggable(true));
+                mPresenter.latlng2Address(latLng.latitude,latLng.longitude);
+                Log.e(TAG, "添加circle成功！");
+            }
+        });
     }
 
     private void init() {
@@ -139,6 +170,7 @@ public class FenceActivity extends BaseActivity<FenceView, FencePresenter, Fence
         aMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)).icon(
                 BitmapDescriptorFactory
                         .fromResource(R.mipmap.ic_fence_people)).title("本机").draggable(false));
+        //
         aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(
                 new LatLng(latitude, longitude), 15.5f, 0, 30)));
         seekBar.setProgress(1000);
@@ -186,6 +218,7 @@ public class FenceActivity extends BaseActivity<FenceView, FencePresenter, Fence
             case R.id.iv_add_device:
                 break;
             case R.id.iv_location_device:
+                mPresenter.getDeviceLocation();
                 break;
             case R.id.iv_location_self:
                 mPresenter.getMyLocation();
