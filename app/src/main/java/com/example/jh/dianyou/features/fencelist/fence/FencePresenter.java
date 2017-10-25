@@ -67,8 +67,8 @@ public class FencePresenter extends YaRxPresenter<FenceView> {
     }
 
     public void latlng2Address(double latitude, double longitude) {
-        GeocodeSearch geocoderSearch = new GeocodeSearch(getView().context());
-        geocoderSearch.setOnGeocodeSearchListener(new GeocodeSearch.OnGeocodeSearchListener() {
+        GeocodeSearch geocodeSearch = new GeocodeSearch(getView().context());
+        geocodeSearch.setOnGeocodeSearchListener(new GeocodeSearch.OnGeocodeSearchListener() {
             /**
              * 根据给定的经纬度和最大结果数返回逆地理编码的结果列表。
              * @param result
@@ -111,7 +111,7 @@ public class FencePresenter extends YaRxPresenter<FenceView> {
         });
 
         RegeocodeQuery query = new RegeocodeQuery(new LatLonPoint(latitude,longitude), 200,GeocodeSearch.GPS);
-        geocoderSearch.getFromLocationAsyn(query);
+        geocodeSearch.getFromLocationAsyn(query);
 
     }
 }

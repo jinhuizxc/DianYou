@@ -3,9 +3,9 @@ package com.example.jh.dianyou.features.fencelist.fence;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -34,7 +34,7 @@ import butterknife.OnClick;
 /**
  * Created by jinhui on 2017/10/20.
  * Email：1004260403@qq.com
- *
+ * <p>
  * 项目安全区域出现bug急需解决！
  */
 
@@ -54,6 +54,9 @@ public class FenceActivity extends BaseActivity<FenceView, FencePresenter, Fence
     ImageView ivLocationSelf;
     @BindView(R.id.btn_save)
     Button btnSave;
+    @BindView(R.id.edit_address)
+    EditText editAddress;
+
 
     private AMap aMap;
     Marker marker;
@@ -85,8 +88,7 @@ public class FenceActivity extends BaseActivity<FenceView, FencePresenter, Fence
                 marker = aMap.addMarker(new MarkerOptions().position(latLng).icon(
                         BitmapDescriptorFactory
                                 .fromResource(R.mipmap.ic_marker_safe)).title("中心").draggable(true));
-                mPresenter.latlng2Address(latLng.latitude,latLng.longitude);
-                Log.e(TAG, "添加circle成功！");
+                mPresenter.latlng2Address(latLng.latitude, latLng.longitude);
             }
         });
     }
@@ -152,7 +154,7 @@ public class FenceActivity extends BaseActivity<FenceView, FencePresenter, Fence
 
     @Override
     public void showFenceAddress(String address) {
-
+        editAddress.setText(address);
     }
 
     @Override
