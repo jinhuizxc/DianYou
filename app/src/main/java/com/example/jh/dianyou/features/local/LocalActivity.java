@@ -57,6 +57,8 @@ import butterknife.OnClick;
  *
  * 获取当前位置，
  * 获取手表实时位置
+ *
+ * 可以考虑数据库了！
  */
 
 public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, LocalComponent> implements LocalView, AMapLocationListener {
