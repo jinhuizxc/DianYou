@@ -2,6 +2,7 @@ package com.example.jh.dianyou.features.local;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,6 +10,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -91,6 +94,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
     @BindView(R.id.tv_message_num)
     TextView tvMessageNum;
     private boolean ishide = true;
+
     long prelongTime = 0;
 
     @Override
@@ -128,7 +132,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             pw.setElevation(5f);
         }
-
+        // 判定是否绑定设备
         mPresenter.getDevice();
 
         // 请求定位权限，声明mLocationOption对象
@@ -137,6 +141,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             return;
         }
+
         // 位置监听方法
         mlocationClient.setLocationListener(this);
         mlocationClient.startLocation();
@@ -258,10 +263,6 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 
     }
 
-    @Override
-    public void addOnMap(double lat, double lng) {
-
-    }
 
     @Override
     public void addlocationMap(double lat, double lng) {
@@ -306,7 +307,38 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
      */
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
+        if (aMapLocation != null) {
+            if (aMapLocation.getErrorCode() == 0) {
+                //定位成功回调信息，设置相关消息
+                aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
+                //获取纬度
+                aMapLocation.getLongitude();//获取经度
+                aMapLocation.getAccuracy();//获取精度信息
+                System.out.println("/////" + aMapLocation.getLatitude() + "," + aMapLocation.getLongitude());
+                Log.e(TAG, "onLocationChanged方法执行");
+                // 显示当前位置
+                showMap(aMapLocation.getLatitude(), aMapLocation.getLongitude());
 
+            } else {
+                Log.e(TAG, "显示错误信息");
+                //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+                Log.e("AmapError", "location Error, ErrCode:"
+                        + aMapLocation.getErrorCode() + ", errInfo:"
+                        + aMapLocation.getErrorInfo());
+            }
+        }
+    }
+
+    private void showMap(double latitude, double longitude) {
+        map.getMap().clear();
+        LatLng latLng = new LatLng(latitude, longitude);
+        Marker marker = map.getMap().addMarker(new MarkerOptions().draggable(false).position(latLng).icon(
+                BitmapDescriptorFactory
+                        .fromResource(R.mipmap.ic_marker)));
+        marker.showInfoWindow();
+        map.getMap().moveCamera(
+                CameraUpdateFactory.newCameraPosition(new CameraPosition(
+                        latLng, 15, 0, 30)));
     }
 
     @OnClick({R.id.iv_history, R.id.iv_fence, R.id.iv_add_device, R.id.iv_phone, R.id.iv_setting, R.id.iv_talk, R.id.iv_photo, R.id.iv_record, R.id.iv_location

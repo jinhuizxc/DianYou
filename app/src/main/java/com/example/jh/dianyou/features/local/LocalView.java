@@ -38,7 +38,6 @@ public interface LocalView extends LoadDataView {
 
     void showTakePhotoResult();
 
-    void addOnMap(double lat, double lng);
     void addlocationMap(double lat, double lng);
 
     void showLocation(double latitude, double longitude);

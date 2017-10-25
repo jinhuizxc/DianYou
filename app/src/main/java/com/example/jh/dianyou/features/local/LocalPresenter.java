@@ -35,14 +35,14 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
 
     private static final String TAG = LocalPresenter.class.getSimpleName();
 
-    private Dialog mDialog;
-    private Handler mHandler = new Handler() {
+    private ProgressDialog pd;
+    private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what) {
+            switch (msg.what){
                 case 1:
-                    DialogThridUtils.closeDialog(mDialog);
+                    pd.dismiss();
                     break;
             }
         }
@@ -69,8 +69,15 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
 
     public void getMylocation() {
         // 加载进度条画面
-        mDialog = DialogThridUtils.showWaitDialog(getView().context(), "加载中...", false, true);
-        mHandler.sendEmptyMessageDelayed(1, 1000);
+        // 加载进度条
+        pd = new ProgressDialog(getView().context());
+        pd.setMessage("loading");
+        if (!pd.isShowing()) {
+            pd.show();
+        }
+        handler.sendEmptyMessageDelayed(1,1000);
+//        mDialog = DialogThridUtils.showWaitDialog(getView().context(), "加载中...", false, true);
+//        mHandler.sendEmptyMessageDelayed(1, 1000);
         AMapLocationClient mlocationClient = new AMapLocationClient(getView().context());
         mlocationClient.setLocationOption(mLocationOption);
         mlocationClient.setLocationListener(new AMapLocationListener() {
