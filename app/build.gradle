@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
-apply plugin: 'me.tatarka.retrolambda'
+// 3.0删除
+//apply plugin: 'android-apt'
+// 3.0支持
+//apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.example.jh.dianyou"
         minSdkVersion 19
@@ -69,13 +71,13 @@ dependencies {
     compile project(path: ':base')
     // butterknife
     compile 'com.jakewharton:butterknife:8.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     // gson
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'javax.inject:javax.inject:1'
     // dagger
-    apt 'com.google.dagger:dagger-compiler:2.11'
     compile 'com.google.dagger:dagger:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
     provided 'javax.annotation:jsr250-api:1.0'
     // rxjava
     compile 'org.greenrobot:eventbus:3.1.0-RC'
