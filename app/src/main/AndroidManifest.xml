@@ -67,6 +67,7 @@
 
         <activity android:name=".features.fencelist.FenceListActivity"/>
         <activity android:name=".features.fencelist.fence.FenceActivity"/>
+        <activity android:name=".features.adddevice.AddDeviceActivity"/>
 
     </application>
 

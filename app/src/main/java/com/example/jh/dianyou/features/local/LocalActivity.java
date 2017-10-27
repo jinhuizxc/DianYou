@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -37,6 +38,7 @@ import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
 import com.example.jh.dianyou.AndroidApplication;
 import com.example.jh.dianyou.R;
+import com.example.jh.dianyou.features.adddevice.AddDeviceActivity;
 import com.example.jh.dianyou.features.fencelist.FenceListActivity;
 import com.example.jh.dianyou.features.history.HistoryActivity;
 import com.example.jh.dianyou.features.mine.my.MineActivity;
@@ -202,7 +204,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 
     @Override
     public void noDevice() {
-
+        startActivity(new Intent(LocalActivity.this, AddDeviceActivity.class));
     }
 
     @Override
@@ -227,7 +229,11 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 
     @Override
     public void addDeviceStatus(int count) {
-
+        if (count == 0) {
+            this.noDevice();
+        } else {
+            pw.showAsDropDown(flToolbar, Gravity.END, 0, 0);
+        }
     }
 
     @Override
@@ -348,7 +354,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_add_device:
-//                mPresenter.addDevice();
+                mPresenter.addDevice();
                 return;
             case R.id.iv_setting:
                 if (ishide) {

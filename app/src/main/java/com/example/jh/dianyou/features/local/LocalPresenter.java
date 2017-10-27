@@ -102,4 +102,9 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
 
         mlocationClient.startLocation();
     }
+
+    public void addDevice() {
+//        int deviceCount = deviceRepo.getDeviceCount();
+//        getView().addDeviceStatus(deviceCount);
+    }
 }
