@@ -37,9 +37,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
         <activity
             android:name=".view.activity.WelcomeActivity">
             <intent-filter>
@@ -68,7 +65,7 @@
         <activity android:name=".features.fencelist.FenceListActivity"/>
         <activity android:name=".features.fencelist.fence.FenceActivity"/>
         <activity android:name=".features.adddevice.AddDeviceActivity"/>
-
+        <activity android:name=".features.adddevice.scan.ScanActivity"/>
     </application>
 
 </manifest>

@@ -34,6 +34,7 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
 
 
     private static final String TAG = LocalPresenter.class.getSimpleName();
+//    private DeviceRepo deviceRepo;
 
     private ProgressDialog pd;
     private Handler handler = new Handler(){
@@ -106,5 +107,10 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
     public void addDevice() {
 //        int deviceCount = deviceRepo.getDeviceCount();
 //        getView().addDeviceStatus(deviceCount);
+        getView().addDeviceStatus(0);
+    }
+
+    public void checkDevice(String imei) {
+//        deviceRepo.checkDevice(imei);
     }
 }

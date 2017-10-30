@@ -20,6 +20,7 @@ package com.example.jh.dianyou.di.components;
 import com.example.jh.dianyou.di.modules.ActivityModule;
 import com.example.jh.dianyou.di.modules.ApplicationModule;
 import com.example.jh.dianyou.di.modules.ProviderModule;
+import com.example.jh.dianyou.features.adddevice.AddDeviceComponent;
 import com.example.jh.dianyou.features.fencelist.FenceListComponent;
 import com.example.jh.dianyou.features.fencelist.fence.FenceComponent;
 import com.example.jh.dianyou.features.history.HistoryComponent;
@@ -48,4 +49,6 @@ public interface ApplicationComponent {
     FenceListComponent fenceListComponent(ActivityModule activityModule);
 
     FenceComponent fenceComponent(ActivityModule activityModule);
+
+    AddDeviceComponent addDeviceComponent(ActivityModule activityModule);
 }

@@ -102,7 +102,7 @@
             android:visibility="gone" />
 
         <LinearLayout
-            android:id="@+id/ll_info"
+            android:id="@+id/request_info"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

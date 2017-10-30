@@ -1,0 +1,21 @@
+
+CREATE TABLE Device (
+  _id INTEGER AS Integer PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  imei TEXT NOT NULL,
+  phone TEXT,
+  interval INTEGER AS Integer,
+  ischeck INTEGER AS Boolean DEFAULT 0 NOT NULL
+);
+
+delete_all:
+DELETE FROM Device WHERE 1;
+
+get_all:
+SELECT * FROM Device;
+
+update_ischeck:
+UPDATE Device SET ischeck=1 WHERE imei=?;
+
+get_check:
+SELECT * FROM Device WHERE ischeck=?;

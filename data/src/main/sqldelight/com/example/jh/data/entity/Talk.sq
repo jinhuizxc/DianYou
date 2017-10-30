@@ -1,0 +1,31 @@
+
+CREATE TABLE Talk (
+  _id INTEGER AS Integer PRIMARY KEY AUTOINCREMENT,
+  imei TEXT NOT NULL,
+  username TEXT,
+  filepath TEXT NOT NULL,
+  create_at INTEGER NOT NULL,
+  success INTEGER AS Boolean DEFAULT 0 NOT NULL,
+  status INTEGER AS Boolean DEFAULT 0 NOT NULL,
+  duration INTEGER AS Integer NOT NULL,
+  isread INTEGER AS Boolean DEFAULT 0 NOT NULL
+);
+
+delete_all: 
+DELETE FROM Talk WHERE 1;
+
+get_all:
+SELECT * FROM Talk;
+
+get_the_mei:
+SELECT * FROM Talk WHERE imei=?;
+
+set_upload_error:
+UPDATE Talk SET success=0 WHERE _id=?;
+
+set_isread:
+UPDATE Talk SET isread=1 WHERE _id=?;
+
+get_all_count:
+SELECT count(*) FROM Talk WHERE isread =0 and imei=? and status=0;
+

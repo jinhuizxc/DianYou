@@ -1,0 +1,20 @@
+
+CREATE TABLE User (
+  _id INTEGER AS Integer PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL,
+  nickname TEXT,
+  password TEXT,
+  token TEXT,
+  status INTEGER AS Integer NOT NULL,
+  create_at INTEGER NOT NULL
+);
+
+delete_all:
+DELETE FROM User WHERE 1;
+
+get_all:
+SELECT * FROM User;
+get_all_by_status:
+SELECT * FROM User WHERE status=?;
+set_all_status:
+UPDATE User SET status=? WHERE 1;
