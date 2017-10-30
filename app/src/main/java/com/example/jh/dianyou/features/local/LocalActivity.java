@@ -370,7 +370,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
     }
 
     @OnClick({R.id.iv_history, R.id.iv_fence, R.id.iv_add_device, R.id.iv_phone, R.id.iv_setting, R.id.iv_talk, R.id.iv_photo, R.id.iv_record, R.id.iv_location
-            , R.id.iv_goout, R.id.iv_manager, R.id.iv_message, R.id.iv_find, R.id.iv_reading_pen})
+            , R.id.iv_goout, R.id.iv_manager, R.id.iv_message, R.id.iv_find, R.id.iv_reading_pen, R.id.iv_me})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_add_device:

@@ -35,9 +35,9 @@ public class UserModule {
     return retrofit.create(UserApi.class);
   }
 
-//  @PerActivity
-//  @Provides
-//  UserDelegate provideUserDelegate(final UserDelegateImpl userDelegate) {
-//    return userDelegate;
-//  }
+  @PerActivity
+  @Provides
+  UserDelegate provideUserDelegate(final UserDelegateImpl userDelegate) {
+    return userDelegate;
+  }
 }

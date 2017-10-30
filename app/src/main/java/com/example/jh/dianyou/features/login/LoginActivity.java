@@ -24,6 +24,8 @@ import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/9/26.
+ *
+ * 登录的用户项目存在数据库设计 待解决——2017-10-30
  */
 
 public class LoginActivity extends BaseActivity<LoginView, LoginPresenter, UserComponent> implements LoginView {
