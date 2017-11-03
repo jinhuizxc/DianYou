@@ -26,6 +26,8 @@ import com.example.jh.dianyou.features.fencelist.fence.FenceComponent;
 import com.example.jh.dianyou.features.history.HistoryComponent;
 import com.example.jh.dianyou.features.local.LocalComponent;
 import com.example.jh.dianyou.features.login.UserComponent;
+import com.example.jh.dianyou.features.manager.ManagerComponent;
+import com.example.jh.dianyou.features.manager.disturb.DisturbComponent;
 import com.example.jh.dianyou.features.mine.my.MineComponent;
 
 import javax.inject.Singleton;
@@ -51,4 +53,8 @@ public interface ApplicationComponent {
     FenceComponent fenceComponent(ActivityModule activityModule);
 
     AddDeviceComponent addDeviceComponent(ActivityModule activityModule);
+
+    ManagerComponent managerComponent(ActivityModule activityModule);
+
+    DisturbComponent disturbComponent(ActivityModule activityModule);
 }

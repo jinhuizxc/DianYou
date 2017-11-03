@@ -113,4 +113,8 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
     public void checkDevice(String imei) {
 //        deviceRepo.checkDevice(imei);
     }
+
+    public void manager() {
+        getView().tiaozhaun();
+    }
 }

@@ -66,6 +66,11 @@
         <activity android:name=".features.fencelist.fence.FenceActivity"/>
         <activity android:name=".features.adddevice.AddDeviceActivity"/>
         <activity android:name=".features.adddevice.scan.ScanActivity"/>
+        <activity android:name=".features.manager.ManagerActivity"/>
+        <activity android:name=".features.manager.disturb.DisturbActivity"/>
+
+
+
         <!--配置极光推送-->
 
 

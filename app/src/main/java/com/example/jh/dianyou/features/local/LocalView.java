@@ -30,6 +30,8 @@ public interface LocalView extends LoadDataView {
 
     void tiaozhaun(String imei);
 
+    void tiaozhaun();
+
     void showRead(int count);
     void showMessageRead(int count);
     void setPhoneNumber(String phone);

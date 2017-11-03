@@ -230,4 +230,6 @@
     <string name="reading_record_title">学前数学下</string>
     <string name="reading_record_date">2017-08-15  09:39:10</string>
     <string name="action_safefencesetting">安全区域设置</string>
+    <string name="setting_sos">设置SOS号码</string>
+    <string name="title_disturb">免打扰设置</string>
 </resources>

@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_cloud"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_watchmessage"
+                android:background="@drawable/scrollview_corners"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/watch_msg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img01"
+                    android:gravity="center_vertical"
+                    android:text="@string/watch_meassage"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:id="@+id/rl_contacts"
+                android:background="@drawable/scrollview_corners"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/watch_contact" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img02"
+                    android:gravity="center_vertical"
+
+                    android:text="@string/watch_contacts"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:id="@+id/rl_disturb"
+                android:background="@drawable/scrollview_corners"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/free_excuse" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img03"
+                    android:gravity="center_vertical"
+
+                    android:text="@string/free_excuse"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:background="@drawable/scrollview_corners"
+                android:id="@+id/rl_alarmclock"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/clock" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img04"
+                    android:gravity="center_vertical"
+
+                    android:text="@string/alarm_setting"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:background="@drawable/scrollview_corners"
+                android:id="@+id/rl_locationmode"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/location_mode" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_vertical"
+
+                    android:text="@string/location_mode"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/img05" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:background="@drawable/scrollview_corners"
+                android:id="@+id/rl_managersetting"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/manager" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img06"
+                    android:gravity="center_vertical"
+                    android:text="@string/manager_setting"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:background="@drawable/scrollview_corners"
+                android:id="@+id/rl_findwatch"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img07"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/search" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img07"
+                    android:gravity="center_vertical"
+                    android:text="@string/search"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:background="@drawable/scrollview_corners"
+                android:id="@+id/rl_remoteclose"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/close" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img08"
+                    android:gravity="center_vertical"
+                    android:text="@string/remote_shutdown"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:background="@drawable/scrollview_corners"
+                android:id="@+id/rl_photoalbum"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img09"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/photoalbum" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img09"
+                    android:gravity="center_vertical"
+                    android:text="@string/photo_album"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+            <!--因功能不需要去掉-->
+            <!--<RelativeLayout-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:background="@drawable/scrollview_corners"-->
+            <!--android:id="@+id/rl_time_silent"-->
+            <!--style="@style/manager_style">-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/img10"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:paddingLeft="16dp"-->
+            <!--android:src="@mipmap/time_silent" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_toEndOf="@+id/img10"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="@string/time_silent"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="@dimen/tv_mid" />-->
+
+            <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:paddingRight="5dp"-->
+            <!--android:src="@mipmap/btn_right" />-->
+            <!--</RelativeLayout>-->
+
+            <!--<RelativeLayout-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:background="@drawable/scrollview_corners"-->
+            <!--android:id="@+id/rl_recentcall_list"-->
+            <!--style="@style/manager_style">-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/img11"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingLeft="16dp"-->
+            <!--android:src="@mipmap/recentcall"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentStart="true" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_toEndOf="@+id/img11"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="@string/recentcall_list"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="@dimen/tv_mid" />-->
+
+            <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:paddingRight="5dp"-->
+            <!--android:src="@mipmap/btn_right" />-->
+            <!--</RelativeLayout>-->
+
+            <RelativeLayout
+                android:layout_marginTop="2dp"
+                android:background="@drawable/scrollview_corners"
+                android:id="@+id/rl_sos"
+                style="@style/manager_style">
+
+                <ImageView
+                    android:id="@+id/img12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:src="@mipmap/recentcall"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/img12"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_sos"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_mid" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="5dp"
+                    android:src="@mipmap/btn_right" />
+            </RelativeLayout>
+            <Button
+                android:layout_marginTop="30dp"
+                android:id="@+id/btn_unbind"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                style="@style/btn_style"
+                android:background="@drawable/selector_unbind"
+                android:text="@string/desc_unbind" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -18,6 +18,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -43,6 +44,7 @@ import com.example.jh.dianyou.R;
 import com.example.jh.dianyou.features.adddevice.AddDeviceActivity;
 import com.example.jh.dianyou.features.fencelist.FenceListActivity;
 import com.example.jh.dianyou.features.history.HistoryActivity;
+import com.example.jh.dianyou.features.manager.ManagerActivity;
 import com.example.jh.dianyou.features.mine.my.MineActivity;
 import com.example.jh.dianyou.utils.PreferencesUtils;
 import com.example.jh.dianyou.utils.T;
@@ -262,8 +264,14 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
     }
 
     @Override
-    public void tiaozhaun(String imei) {
+    public void tiaozhaun() {
+        startActivity(new Intent(LocalActivity.this, ManagerActivity.class));
+    }
 
+    @Override
+    public void tiaozhaun(String imei) {
+//        startActivity(new Intent(LocalActivity.this, ManagerActivity.class)
+//                .putExtra("imei", imei));
     }
 
     @Override
@@ -420,7 +428,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 //                mPresenter.takephoto();
                 break;
             case R.id.iv_manager:
-//                mPresenter.just();
+                mPresenter.manager();
                 break;
             case R.id.iv_phone:
                 if (ActivityCompat.checkSelfPermission(LocalActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -462,6 +470,21 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 //                startActivity(new Intent(LocalActivity.this, ReadingBookActivity.class));
                 break;
         }
+    }
+
+
+    /**
+     * 管理隐藏布局
+     * @param ev
+     * @return
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN && !ishide) {
+            ObjectAnimator.ofFloat(llFlow, "translationX", -llFlow.getMeasuredWidth(), llFlow.getMeasuredWidth()).setDuration(500).start();
+            ishide = true;
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
 

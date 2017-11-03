@@ -174,4 +174,40 @@
         <item name="android:textSize">@dimen/tv_mid</item>
     </style>
 
+    <!--管理界面-->
+    <style name="manager_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+    <!--免打扰，管理按钮样式-->
+    <style name="btn_style" parent="parent_buttonStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+    </style>
+
+    <!--自定义dialog-->
+    <style name="text_title">
+        <item name="android:textColor">#ff000000</item>
+    </style>
+
+    <style name="text_ok" >
+        <item name="android:textColor">#ff000000</item>
+    </style>
+
+    <style name="text_cancel" >
+        <item name="android:textColor">#ff000000</item>
+    </style>
+
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+
 </resources>

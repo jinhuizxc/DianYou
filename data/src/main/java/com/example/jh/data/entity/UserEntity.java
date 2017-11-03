@@ -21,7 +21,7 @@ public abstract class UserEntity implements UserModel {
 
     public static final UserModel.Factory<UserEntity> FACTORY = new UserModel.Factory<>(AutoValue_UserEntity::new);
 
-    // 这一句加上就会错，是为什么？2017-10-30
+    // 这一句加上就会错，是为什么？2017-11-3
 //    public static final RowMapper<UserEntity> MAPPER = FACTORY.get_allMapper();
 
 
