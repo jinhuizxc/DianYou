@@ -24,6 +24,8 @@ allprojects {
         maven {
             url  "http://dl.bintray.com/piasy/maven"
         }
+        // JitPack 仓库地址
+        maven { url "https://jitpack.io" }
     }
 }
 

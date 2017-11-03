@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.util.Printer;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -61,6 +62,7 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
     }
 
     public void getDevice() {
+        Log.e(TAG, "getDevice 方法执行");
     }
 
     public void getLocation() {
@@ -90,6 +92,7 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
                         getView().showLocation(aMapLocation.getLatitude(), aMapLocation.getLongitude());
                         System.out.println("/////" + aMapLocation.getLatitude() + "," + aMapLocation.getLongitude());
                     } else {
+                        Toast.makeText(getView().context(), "网络连接异常，请检查网络是否连接！", Toast.LENGTH_SHORT).show();
                         //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                         Log.e("AmapError", "location Error, ErrCode:"
                                 + aMapLocation.getErrorCode() + ", errInfo:"
@@ -107,7 +110,7 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
     public void addDevice() {
 //        int deviceCount = deviceRepo.getDeviceCount();
 //        getView().addDeviceStatus(deviceCount);
-        getView().addDeviceStatus(0);
+        getView().addDeviceStatus(1);  // 测试0 或者1
     }
 
     public void checkDevice(String imei) {

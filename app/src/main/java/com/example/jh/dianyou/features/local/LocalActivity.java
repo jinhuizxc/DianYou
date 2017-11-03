@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -50,6 +51,7 @@ import com.example.jh.dianyou.utils.PreferencesUtils;
 import com.example.jh.dianyou.utils.T;
 import com.example.jh.dianyou.view.activity.BaseActivity;
 import com.example.jh.dianyou.view.adapter.DeviceListAdapter;
+import com.sloop.net.utils.NetUtils;
 
 import javax.inject.Inject;
 
@@ -143,8 +145,13 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             pw.setElevation(5f);
         }
-        // 判定是否绑定设备
-        mPresenter.getDevice();
+        if(NetUtils.isNetConnection(this)){
+            // 判定是否有设备，有设备获取定位信息等
+            mPresenter.getDevice();
+        }else {
+            Toast.makeText(this, "网络连接异常，请检查网络是否连接！", Toast.LENGTH_SHORT).show();
+        }
+
 
         // 请求定位权限，声明mLocationOption对象
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
