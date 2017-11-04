@@ -10,7 +10,6 @@ import com.example.jh.data.ProgressSubscriber;
 import com.example.jh.data.SubscriberOnNextListener;
 import com.example.jh.data.entity.BlankEntity;
 import com.example.jh.data.user.TokenEntity;
-import com.example.jh.data.user.UserRepo;
 import com.example.jh.dianyou.R;
 import com.example.jh.dianyou.utils.MD5Util;
 import com.example.jh.dianyou.utils.PreferencesUtils;

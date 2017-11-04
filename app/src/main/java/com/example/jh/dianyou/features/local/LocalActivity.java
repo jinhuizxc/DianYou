@@ -39,7 +39,6 @@ import com.amap.api.maps2d.model.CameraPosition;
 import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
-import com.example.jh.data.entity.DeviceEn;
 import com.example.jh.dianyou.AndroidApplication;
 import com.example.jh.dianyou.R;
 import com.example.jh.dianyou.features.adddevice.AddDeviceActivity;
@@ -50,7 +49,7 @@ import com.example.jh.dianyou.features.mine.my.MineActivity;
 import com.example.jh.dianyou.utils.PreferencesUtils;
 import com.example.jh.dianyou.utils.T;
 import com.example.jh.dianyou.view.activity.BaseActivity;
-import com.example.jh.dianyou.view.adapter.DeviceListAdapter;
+
 import com.sloop.net.utils.NetUtils;
 
 import javax.inject.Inject;
@@ -105,8 +104,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
     @BindView(R.id.tv_message_num)
     TextView tvMessageNum;
     private boolean ishide = true;
-    @Inject
-    DeviceListAdapter adapter;
+
 
     long prelongTime = 0;
 
@@ -166,22 +164,22 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
     }
 
     private void setupRecyclerView() {
-        lvDevice.setAdapter(adapter);
-        lvDevice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                pw.dismiss();
-                if (position == adapter.getList().size()) {
-                    startActivity(new Intent(LocalActivity.this, AddDeviceActivity.class));
-                } else {
-                    DeviceEn deviceEntity = adapter.getList().get(position);
-                    mPresenter.checkDevice(deviceEntity.imei());
-                    setDeviceName(deviceEntity.name());
-
-                }
-
-            }
-        });
+//        lvDevice.setAdapter(adapter);
+//        lvDevice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                pw.dismiss();
+//                if (position == adapter.getList().size()) {
+//                    startActivity(new Intent(LocalActivity.this, AddDeviceActivity.class));
+//                } else {
+//                    DeviceEn deviceEntity = adapter.getList().get(position);
+//                    mPresenter.checkDevice(deviceEntity.imei());
+//                    setDeviceName(deviceEntity.name());
+//
+//                }
+//
+//            }
+//        });
     }
 
 
