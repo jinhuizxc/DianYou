@@ -34,7 +34,7 @@ public interface UserDelegate {
     UserEntity selectUser(String username);
 
     void updateUser(String username,String nickname,String password,String token,int status);
-    // 这个方法暂时注释掉 2017-10-30
+    // 这个方法暂时注释掉 2017-11-3
 //    Observable<List<UserEntity>> selectRxUserByStatus(int status);
 
     void deleteUser(String username);

@@ -14,6 +14,7 @@ import com.squareup.sqldelight.RowMapper;
 @AutoValue
 public abstract class UserEntity implements UserModel {
 
+
     @NonNull
     public static Builder builder() {
         return new AutoValue_UserEntity.Builder();

@@ -107,7 +107,7 @@ public class UserDelegateImpl implements UserDelegate {
     }
 
     /**
-     * // 这个方法暂时注释掉 2017-10-30
+     * // 这个方法暂时注释掉 2017-11-3
      * @param username
      */
 //    @Override
