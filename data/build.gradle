@@ -1,10 +1,10 @@
 apply plugin: 'com.android.library'
 // 3.0删除
-//apply plugin: 'android-apt'
+apply plugin: 'android-apt'
 apply plugin: 'com.squareup.sqldelight'
 apply plugin: 'com.fernandocejas.frodo'
 // 3.0支持
-//apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -47,7 +47,7 @@ dependencies {
     compile 'javax.inject:javax.inject:1'
     // dagger2
     compile 'com.google.dagger:dagger:2.11'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    apt 'com.google.dagger:dagger-compiler:2.11'
     provided 'javax.annotation:jsr250-api:1.0'
     // retrofit2
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
@@ -61,15 +61,15 @@ dependencies {
     compile 'com.jakewharton.timber:timber:4.5.1'
     // 基础auto-value
     provided 'com.google.auto.value:auto-value:1.5.1'
-    annotationProcessor 'com.google.auto.value:auto-value:1.5.1'
+    apt 'com.google.auto.value:auto-value:1.5.1'
     // AutoValue的扩展，为每个AutoValue注释对象创建一个简单的Gson TypeAdapterFactory。
     // https://github.com/rharter/auto-value-gson
-    annotationProcessor 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
+    apt 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
     provided 'com.ryanharter.auto.value:auto-value-gson:0.4.6'
     // gson
     compile 'com.google.code.gson:gson:2.8.2'
     // 当User需要实现Parcelable接口的时候，AutoValue也可以帮你搞定了。
-    annotationProcessor 'com.ryanharter.auto.value:auto-value-parcel:0.2.5'
+    apt 'com.ryanharter.auto.value:auto-value-parcel:0.2.5'
     // 需要自定义TypeAdapter就要导入
     compile 'com.ryanharter.auto.value:auto-value-parcel-adapter:0.2.5'
 
