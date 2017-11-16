@@ -50,6 +50,7 @@
 
 
         <EditText
+            android:cursorVisible="false"
             android:id="@+id/edit_device"
             style="@style/edittext_style"
             android:layout_width="0dp"
@@ -85,6 +86,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:cursorVisible="false"
+            android:focusable="false"
             android:id="@+id/edit_address"
             style="@style/edittext_style"
             android:layout_width="0dp"
