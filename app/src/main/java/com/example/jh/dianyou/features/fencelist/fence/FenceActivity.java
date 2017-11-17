@@ -132,6 +132,13 @@ public class FenceActivity extends BaseActivity<FenceView, FencePresenter, Fence
     private void getAddressFromLonLat(LatLng latLng) {
     }
 
+    /**
+     * 开始进行poi搜索
+     * 通过经纬度获取附近的poi信息
+     * <p>
+     * 1、keyword 传 ""
+     * 2、poiSearch.setBound(new PoiSearch.SearchBound(lpTemp, 5000, true)); 根据
+     */
     private void doSearchQueryByPosition() {
         currentPage = 0;
         query = new PoiSearch.Query("", "", city);// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
