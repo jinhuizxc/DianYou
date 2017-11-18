@@ -1,8 +1,10 @@
 package com.example.jh.dianyou.features.history;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -14,10 +16,12 @@ import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.CameraPosition;
+import com.amap.api.maps2d.model.CircleOptions;
 import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
 import com.amap.api.maps2d.model.PolylineOptions;
+import com.example.jh.data.entity.HistoryEntity;
 import com.example.jh.data.location.LocationEntity;
 import com.example.jh.dianyou.AndroidApplication;
 import com.example.jh.dianyou.R;
@@ -36,6 +40,7 @@ import rx.functions.Func1;
 
 public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter, HistoryComponent> implements HistoryView {
 
+    private static final String TAG = HistoryActivity.class.getSimpleName();
     @BindView(R.id.map)
     MapView map;
     @BindView(R.id.frame_layout)
@@ -49,6 +54,14 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
     SeekBar seekBar;
     @BindView(R.id.tv_time_bar)
     TextView tvTimeBar;
+
+    private LatLng AllLatLng;
+    // 起点
+    private LatLng StartLatLng;
+    private LatLng EndLatLng;
+
+    Marker marker1;
+
     @Override
     protected String getToolbarTitle() {
         return getString(R.string.title_history);
@@ -204,14 +217,33 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
         tvTime.setText(year + "-" + month + "-" + date);
     }
 
-    @Override
-    public void addOnMap(List<LocationEntity> locationModels) {
 
-        Observable.from(locationModels).map(new Func1<LocationEntity, LatLng>() {
+    @Override
+    public void addOnMap(List<HistoryEntity> locationModels) {
+
+        Observable.from(locationModels).map(new Func1<HistoryEntity, LatLng>() {
             @Override
-            public LatLng call(LocationEntity locationModel) {
+            public LatLng call(HistoryEntity locationModel) {
                 double lat = Double.parseDouble(locationModel.getLat());
                 double lng = Double.parseDouble(locationModel.getLng());
+                AllLatLng = new LatLng(lat, lng);
+
+                Log.e(TAG, "latLngs =" + AllLatLng);
+                Log.e(TAG, "起点 =" + "" + locationModels.get(0).getLat());
+                StartLatLng = new LatLng(Double.valueOf(locationModels.get(0).getLat()), Double.valueOf(locationModels.get(0).getLng()));
+                // 画终点
+                marker1 = map.getMap().addMarker(new MarkerOptions().draggable(false).position(StartLatLng)
+                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker_people)).title("终点"));
+                marker1.showInfoWindow();
+
+                // 画圈标识
+                aMap.addCircle(new CircleOptions().center(AllLatLng)
+                        .radius(Double.parseDouble("10"))
+                        .strokeColor(Color.RED)
+                        .fillColor(Color.parseColor("#f90303")));
+//                Marker marker1 = map.getMap().addMarker(new MarkerOptions().draggable(false).position(AllLatLng)
+//                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.circle)));
+//                marker1.showInfoWindow();
                 return new LatLng(lat, lng);
             }
         }).toList().subscribe(new Subscriber<List<LatLng>>() {
@@ -228,12 +260,18 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
             @Override
             public void onNext(List<LatLng> latLngs) {
 
-                aMap.addPolyline(new PolylineOptions().addAll(latLngs).color(getResources().getColor(R.color.colorPrimary)));
+                aMap.addPolyline(new PolylineOptions().addAll(latLngs).width(5).color(getResources().getColor(R.color.red)));
+                Log.e(TAG, "终点 =" + latLngs.get(latLngs.size() - 1));
+                EndLatLng = latLngs.get(latLngs.size() - 1);
+                // 画起点
+                Marker marker2 = map.getMap().addMarker(new MarkerOptions().draggable(false).position(EndLatLng)
+                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker)).title("起点"));
+                marker2.showInfoWindow();
+                // 视角在终点  zoom: 15f  11f 越大位置越精确
                 aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(
-                        latLngs.get(latLngs.size() - 1), 15.5f, 0, 30)));
+                        StartLatLng, 15f, 0, 30)));
             }
         });
-
 
     }
 

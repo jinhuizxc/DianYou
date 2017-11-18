@@ -8,8 +8,11 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.example.jh.base.YaRxPresenter;
 import com.example.jh.data.PerActivity;
+import com.example.jh.data.ProgressSubscriber;
 import com.example.jh.data.SubscriberOnNextListener;
+import com.example.jh.data.entity.HistoryEntity;
 import com.example.jh.data.location.LocationEntity;
+import com.example.jh.data.location.LocationRepo;
 import com.example.jh.dianyou.R;
 import com.example.jh.dianyou.utils.PreferencesUtils;
 import com.example.jh.dianyou.utils.T;
@@ -29,6 +32,24 @@ import rx.schedulers.Schedulers;
 
 /**
  * Created by fflamingogo on 2016/7/22.
+ *
+ * Error:(42, 8) 错误:
+ * [com.example.jh.dianyou.features.history.HistoryComponent.inject(com.example.jh.dianyou.features.history.HistoryActivity)]
+ * com.example.jh.data.location.LocationApi cannot be provided without an @Provides-annotated method.
+ com.example.jh.data.location.LocationApi is injected at
+ com.example.jh.data.location.LocationRepo.<init>(locationApi)
+ com.example.jh.data.location.LocationRepo is injected at
+ com.example.jh.dianyou.features.history.HistoryPresenter.<init>(locationRepo)
+ com.example.jh.dianyou.features.history.HistoryPresenter is injected at
+ com.example.jh.base.YaMvpDiActivity.mPresenter
+ com.example.jh.dianyou.features.history.HistoryActivity is injected at
+ com.example.jh.dianyou.features.history.HistoryComponent.inject(historyActivity)
+
+
+
+ Error:(7, 44) 错误: 找不到符号
+ 符号:   类 DaggerApplicationComponent
+ 位置: 程序包 com.example.jh.dianyou.di.components
  */
 @PerActivity
 public class HistoryPresenter extends YaRxPresenter<HistoryView> {
@@ -37,13 +58,13 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
     @Inject
     AMapLocationClientOption mLocationOption;
 
-//    private LocationRepo locationRepo;
+    private LocationRepo locationRepo;
 //    private DeviceRepo deviceRepo;
 
     private long mStartTime;
     private long mEndTime;
     GregorianCalendar gregorianCalendar = new GregorianCalendar(TimeZone.getTimeZone("GMT+8:00"));
-    private String mImei;
+    private String mImei = "200030004000020";
 
 //    @Inject
 //    HistoryPresenter(LocationRepo locationRepo, DeviceRepo deviceRepo) {
@@ -52,8 +73,8 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
 //    }
 
     @Inject
-    HistoryPresenter() {
-
+    HistoryPresenter(LocationRepo locationRepo) {
+        this.locationRepo = locationRepo;
     }
 
     void showHistory() {
@@ -75,7 +96,7 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
         getView().showDate(year, month + 1, day);
         System.out.println("---" + mStartTime + "-" + "" + mEndTime);
         // 加载历史轨迹
-//        loadHistory();
+        loadHistory();
 
         getView().setTimeProgress(hour * 60 + min);
 
@@ -117,11 +138,11 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
     }
 
 
-    private SubscriberOnNextListener subscriberOnNextListener = new SubscriberOnNextListener<List<LocationEntity>>() {
+    private SubscriberOnNextListener subscriberOnNextListener = new SubscriberOnNextListener<List<HistoryEntity>>() {
 
 
         @Override
-        public void onNext(List<LocationEntity> locations) {
+        public void onNext(List<HistoryEntity> locations) {
             if (locations.size() == 0) {
                 T.showShort(getView().context().getString(R.string.desc_no_history));
                 getMyLocation();
@@ -147,14 +168,25 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
     }
 
     // 加载历史轨迹
-//    void loadHistory() {
+    void loadHistory() {
 //        getView().clearMap();
 //        addUtilDestroy(locationRepo.history(PreferencesUtils.getString(getView().context(), "Token"), mImei, mStartTime, mEndTime, "gcj02")
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribeOn(Schedulers.io())
 //                .subscribe(new ProgressSubscriber(getView().context(), subscriberOnNextListener))
 //        );
-//    }
+
+        // 模拟一次历史轨迹
+        // https://app.imerit.cn/tp/index.php/Location/history_fast?
+        // token=3980e45ed8664852ee40000054ff0e7d & imei= 200030004000020 & begin= 1510934400 & end=1510978080& coordtype=gcj02
+        String Token = "3980e45ed8664852ee40000054ff0e7d";
+        getView().clearMap();
+        addUtilDestroy(locationRepo.history(Token, mImei, mStartTime, mEndTime, "gcj02")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new ProgressSubscriber(getView().context(), subscriberOnNextListener))
+        );
+    }
 
     // 删除加载的历史轨迹？
 //    public void delateLoadHistory() {

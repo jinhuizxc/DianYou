@@ -2,6 +2,7 @@ package com.example.jh.dianyou.features.history;
 
 
 
+import com.example.jh.data.entity.HistoryEntity;
 import com.example.jh.data.location.LocationEntity;
 import com.example.jh.dianyou.view.LoadDataView;
 
@@ -16,7 +17,7 @@ public interface HistoryView extends LoadDataView {
 
     void showDate(int year, int month, int date);
 
-    void addOnMap(List<LocationEntity> locationModels);
+    void addOnMap(List<HistoryEntity> locationModels);
 
     void setTimeProgress(int min);
 
