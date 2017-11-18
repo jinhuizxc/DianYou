@@ -149,6 +149,7 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
                 return;
             }
             getView().addOnMap(locations);
+            Log.e(TAG, "locations =" + locations);
 
         }
 

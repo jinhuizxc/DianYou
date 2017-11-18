@@ -93,4 +93,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     // JitPack  网络状态判断
     compile 'com.github.GcsSloop:SUtil:v1.0.2'
+    compile files('libs/Android_Map3D_SDK_V5.5.0_20171107.jar')
 }

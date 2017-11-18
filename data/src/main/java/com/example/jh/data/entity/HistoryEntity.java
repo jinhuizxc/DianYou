@@ -6,21 +6,31 @@ package com.example.jh.data.entity;
 
 public class HistoryEntity extends BaseEntity {
 
-    private String id;
+    private String location_id;
     private String address;
-    private int time;
+    private String cellid;
+
     private String lat;
     private String lng;
     private String speed;
     private String bearing;
-    private String cellid;
+    private String location_time;
 
-    public String getId() {
-        return id;
+    public HistoryEntity(String lat, String lng, String speed, String bearing, String location_time) {
+        this.lat = lat;
+        this.lng = lng;
+        this.speed = speed;
+        this.bearing = bearing;
+        this.location_time = location_time;
     }
 
-    public void setId(String id) {
-        this.id = id;
+
+    public String getLocation_id() {
+        return location_id;
+    }
+
+    public void setLocation_id(String location_id) {
+        this.location_id = location_id;
     }
 
     public String getAddress() {
@@ -31,12 +41,12 @@ public class HistoryEntity extends BaseEntity {
         this.address = address;
     }
 
-    public int getTime() {
-        return time;
+    public String getLocation_time() {
+        return location_time;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setLocation_time(String location_time) {
+        this.location_time = location_time;
     }
 
     public String getLat() {
@@ -81,15 +91,13 @@ public class HistoryEntity extends BaseEntity {
 
     @Override
     public String toString() {
-        return "HistoryEntity{" +
-                "id='" + id + '\'' +
+        return "location_id='" + location_id + '\'' +
                 ", address='" + address + '\'' +
-                ", time=" + time +
+                ", location_time='" + location_time + '\'' +
                 ", lat='" + lat + '\'' +
                 ", lng='" + lng + '\'' +
                 ", speed='" + speed + '\'' +
                 ", bearing='" + bearing + '\'' +
-                ", cellid='" + cellid + '\'' +
-                '}';
+                ", cellid='" + cellid + '\'';
     }
 }

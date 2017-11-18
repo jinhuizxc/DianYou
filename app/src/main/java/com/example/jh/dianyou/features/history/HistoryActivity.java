@@ -11,16 +11,22 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.CameraUpdateFactory;
-import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.model.BitmapDescriptorFactory;
-import com.amap.api.maps2d.model.CameraPosition;
-import com.amap.api.maps2d.model.CircleOptions;
-import com.amap.api.maps2d.model.LatLng;
-import com.amap.api.maps2d.model.Marker;
-import com.amap.api.maps2d.model.MarkerOptions;
-import com.amap.api.maps2d.model.PolylineOptions;
+
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
+import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptor;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.CameraPosition;
+import com.amap.api.maps.model.CircleOptions;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
+import com.amap.api.maps.model.PolylineOptions;
+import com.amap.api.trace.LBSTraceClient;
+import com.amap.api.trace.TraceListener;
+import com.amap.api.trace.TraceLocation;
+import com.amap.api.trace.TraceOverlay;
 import com.example.jh.data.entity.HistoryEntity;
 import com.example.jh.data.location.LocationEntity;
 import com.example.jh.dianyou.AndroidApplication;
@@ -29,7 +35,10 @@ import com.example.jh.dianyou.features.history.wheelview.ChangeDatePopwindow;
 import com.example.jh.dianyou.view.activity.BaseActivity;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +47,11 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
 
-public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter, HistoryComponent> implements HistoryView {
+/**
+ * 轨迹纠偏不行的话，就只能在两点之间加上箭头指向。
+ * 点与点之间加上指向型箭头，从1->2->3->4
+ */
+public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter, HistoryComponent> implements HistoryView, TraceListener {
 
     private static final String TAG = HistoryActivity.class.getSimpleName();
     @BindView(R.id.map)
@@ -61,6 +74,13 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
     private LatLng EndLatLng;
 
     Marker marker1;
+    // 轨迹纠偏
+    private List<TraceLocation> mTraceList = new ArrayList<TraceLocation>();
+    private LBSTraceClient mTraceClient;
+    private int mCoordinateType = LBSTraceClient.TYPE_AMAP;
+    private ConcurrentMap<Integer, TraceOverlay> mOverlayList = new ConcurrentHashMap<Integer, TraceOverlay>();
+    private int mSequenceLineID = 1000;
+
 
     @Override
     protected String getToolbarTitle() {
@@ -75,7 +95,9 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
         map.onCreate(savedInstanceState);// 此方法必须重写
 
         aMap = map.getMap();
+        // 加载历史轨迹
         mPresenter.showHistory();
+
         String time = tvTime.getText().toString();
         final String[] split = time.split("-");
         layout.setOnClickListener(new View.OnClickListener() {
@@ -220,7 +242,7 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
 
     @Override
     public void addOnMap(List<HistoryEntity> locationModels) {
-
+        Log.e(TAG, "locationModels =" + locationModels);
         Observable.from(locationModels).map(new Func1<HistoryEntity, LatLng>() {
             @Override
             public LatLng call(HistoryEntity locationModel) {
@@ -228,8 +250,7 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
                 double lng = Double.parseDouble(locationModel.getLng());
                 AllLatLng = new LatLng(lat, lng);
 
-                Log.e(TAG, "latLngs =" + AllLatLng);
-                Log.e(TAG, "起点 =" + "" + locationModels.get(0).getLat());
+//                Log.e(TAG, "起点 =" + "" + locationModels.get(0).getLat());
                 StartLatLng = new LatLng(Double.valueOf(locationModels.get(0).getLat()), Double.valueOf(locationModels.get(0).getLng()));
                 // 画终点
                 marker1 = map.getMap().addMarker(new MarkerOptions().draggable(false).position(StartLatLng)
@@ -244,6 +265,8 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
 //                Marker marker1 = map.getMap().addMarker(new MarkerOptions().draggable(false).position(AllLatLng)
 //                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.circle)));
 //                marker1.showInfoWindow();
+                mTraceList.add(new TraceLocation(lat, lng, 1.0f, 1.0f, 1));
+                Log.e(TAG, "加载点 =" + lat + lng);
                 return new LatLng(lat, lng);
             }
         }).toList().subscribe(new Subscriber<List<LatLng>>() {
@@ -260,8 +283,29 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
             @Override
             public void onNext(List<LatLng> latLngs) {
 
-                aMap.addPolyline(new PolylineOptions().addAll(latLngs).width(5).color(getResources().getColor(R.color.red)));
-                Log.e(TAG, "终点 =" + latLngs.get(latLngs.size() - 1));
+                //用一个数组来存放纹理
+                List<BitmapDescriptor> texTuresList = new ArrayList<BitmapDescriptor>();
+                texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.map_alr));
+                texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.custtexture));
+                texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.map_alr_night));
+
+                //指定某一段用某个纹理，对应texTuresList的index即可, 四个点对应三段颜色
+                List<Integer> texIndexList = new ArrayList<Integer>();
+                texIndexList.add(0);//对应上面的第0个纹理
+                texIndexList.add(2);
+                texIndexList.add(1);
+
+                PolylineOptions options = new PolylineOptions().addAll(latLngs).width(10).color(getResources().getColor(R.color.red));
+
+                //加入对应的颜色,使用setCustomTextureList 即表示使用多纹理；
+                options.setCustomTextureList(texTuresList);
+                //设置纹理对应的Index
+                options.setCustomTextureIndex(texIndexList);
+
+                aMap.addPolyline(options);
+//                // 轨迹纠偏
+//                traceGrasp();
+
                 EndLatLng = latLngs.get(latLngs.size() - 1);
                 // 画起点
                 Marker marker2 = map.getMap().addMarker(new MarkerOptions().draggable(false).position(EndLatLng)
@@ -273,6 +317,30 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
             }
         });
 
+    }
+
+    private void traceGrasp() {
+        Log.e(TAG, "轨迹纠偏方法执行");
+        TraceOverlay mTraceOverlay = new TraceOverlay(aMap);
+        mOverlayList.put(mSequenceLineID, mTraceOverlay);
+        List<LatLng> mapList = traceLocationToMap(mTraceList);
+        mTraceOverlay.setProperCamera(mapList);
+        Log.e(TAG, "mapList =" + mapList.size());
+        mTraceClient = new LBSTraceClient(HistoryActivity.this.getApplicationContext());
+        mTraceClient.queryProcessedTrace(mSequenceLineID, mTraceList,
+                mCoordinateType, this);
+    }
+
+
+    private List<LatLng> traceLocationToMap(List<TraceLocation> traceLocationList) {
+        Log.e(TAG, "轨迹纠偏点转换为地图LatLng");
+        List<LatLng> mapList = new ArrayList<LatLng>();
+        for (TraceLocation location : traceLocationList) {
+            LatLng latlng = new LatLng(location.getLatitude(),
+                    location.getLongitude());
+            mapList.add(latlng);
+        }
+        return mapList;
     }
 
     @Override
@@ -361,5 +429,37 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
                 mPresenter.next();
                 break;
         }
+    }
+
+    /**
+     * 轨迹纠偏失败回调
+     */
+    @Override
+    public void onRequestFailed(int i, String s) {
+        Log.e(TAG, "onRequestFailed");
+    }
+
+    /**
+     * 轨迹纠偏过程回调
+     */
+    @Override
+    public void onTraceProcessing(int lineID, int i1, List<LatLng> segments) {
+        Log.e(TAG, "onTraceProcessing");
+        if (segments == null) {
+            return;
+        }
+        if (mOverlayList.containsKey(lineID)) {
+            TraceOverlay overlay = mOverlayList.get(lineID);
+            overlay.setTraceStatus(TraceOverlay.TRACE_STATUS_PROCESSING);
+            overlay.add(segments);
+        }
+    }
+
+    /**
+     * 轨迹纠偏结束回调
+     */
+    @Override
+    public void onFinished(int i, List<LatLng> list, int i1, int i2) {
+        Log.e(TAG, "onFinished");
     }
 }
