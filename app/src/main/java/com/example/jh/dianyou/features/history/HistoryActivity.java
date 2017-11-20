@@ -28,7 +28,6 @@ import com.amap.api.trace.TraceListener;
 import com.amap.api.trace.TraceLocation;
 import com.amap.api.trace.TraceOverlay;
 import com.example.jh.data.entity.HistoryEntity;
-import com.example.jh.data.location.LocationEntity;
 import com.example.jh.dianyou.AndroidApplication;
 import com.example.jh.dianyou.R;
 import com.example.jh.dianyou.features.history.wheelview.ChangeDatePopwindow;
@@ -48,8 +47,9 @@ import rx.Subscriber;
 import rx.functions.Func1;
 
 /**
- * 轨迹纠偏不行的话，就只能在两点之间加上箭头指向。
- * 点与点之间加上指向型箭头，从1->2->3->4
+ * 1、轨迹纠偏
+ * 2、3d图层添加纹理：
+ * 3、自己绘制：就只能在两点之间加上箭头指向。点与点之间加上指向型箭头，从1->2->3->4
  */
 public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter, HistoryComponent> implements HistoryView, TraceListener {
 
@@ -95,6 +95,7 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
         map.onCreate(savedInstanceState);// 此方法必须重写
 
         aMap = map.getMap();
+        Log.e(TAG, "aMap =" + aMap);
         // 加载历史轨迹
         mPresenter.showHistory();
 
@@ -286,14 +287,14 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
                 //用一个数组来存放纹理
                 List<BitmapDescriptor> texTuresList = new ArrayList<BitmapDescriptor>();
                 texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.map_alr));
-                texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.custtexture));
-                texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.map_alr_night));
+//                texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.map_custtexture));
+//                texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.map_alr_night));
 
                 //指定某一段用某个纹理，对应texTuresList的index即可, 四个点对应三段颜色
                 List<Integer> texIndexList = new ArrayList<Integer>();
                 texIndexList.add(0);//对应上面的第0个纹理
-                texIndexList.add(2);
-                texIndexList.add(1);
+//                texIndexList.add(2);
+//                texIndexList.add(1);
 
                 PolylineOptions options = new PolylineOptions().addAll(latLngs).width(10).color(getResources().getColor(R.color.red));
 
@@ -312,6 +313,7 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker)).title("起点"));
                 marker2.showInfoWindow();
                 // 视角在终点  zoom: 15f  11f 越大位置越精确
+//               最后一个点: 22.553333604601,113.94687608507
                 aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(
                         StartLatLng, 15f, 0, 30)));
             }
@@ -393,6 +395,7 @@ public class HistoryActivity extends BaseActivity<HistoryView, HistoryPresenter,
     @Override
     public void clearMap() {
         aMap.clear();
+        Log.e(TAG, "clearMap方法执行");
     }
 
     @Override

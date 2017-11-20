@@ -115,7 +115,7 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
         getView().showDate(year, month + 1, day);
         getView().resetProgress();
         // 删除历史轨迹
-//        delateLoadHistory();
+        deleteLoadHistory();
     }
 
     void next() {
@@ -190,7 +190,7 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
     }
 
     // 删除加载的历史轨迹？
-//    public void delateLoadHistory() {
+    public void deleteLoadHistory() {
 //        getView().clearMap();
 //        addUtilDestroy(locationRepo.history(PreferencesUtils.getString(getView().context(), "Token"), mImei, mStartTime, mEndTime, "gcj02")
 //                .delay(1, TimeUnit.SECONDS)
@@ -219,7 +219,7 @@ public class HistoryPresenter extends YaRxPresenter<HistoryView> {
 //                })
 //
 //        );
-//    }
+    }
 
 
     void getMyLocation() {
