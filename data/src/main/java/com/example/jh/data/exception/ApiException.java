@@ -31,8 +31,12 @@ public class ApiException extends RuntimeException {
             case -7:
                 message = "没有定位数据";
                 break;
+            // 要求不出现这个-9错误信息提示: "请求认证不通过"
             case -9:
                 message = "请求认证不通过";
+                break;
+            case -16:
+                message = "添加数量已经达到最大";
                 break;
             case -99:
                 message = "您的操作过于频繁，请稍后再试！";  // 获取验证码错误 改为 您的操作过于频繁，请稍后再试！
@@ -58,5 +62,6 @@ public class ApiException extends RuntimeException {
         }
         return message;
     }
+
 }
 

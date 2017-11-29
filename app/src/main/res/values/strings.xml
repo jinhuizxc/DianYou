@@ -36,7 +36,7 @@
     <string name="error_password_long">密码太长</string>
     <string name="error_phone_null">请添加手机号</string>
     <string name="error_phone">手机号格式不对</string>
-    <string name="error_password_defference">确认密码不一样</string>
+    <string name="error_password_defference">请确保两次输入的密码一致</string>
     <string name="success_login">登录成功</string>
     <string name="desc_yes">确定</string>
     <string name="title_aboutus">关于我们</string>
@@ -232,4 +232,5 @@
     <string name="action_safefencesetting">安全区域设置</string>
     <string name="setting_sos">设置SOS号码</string>
     <string name="title_disturb">免打扰设置</string>
+    <string name="againpassword_no_null">确认密码不能为空</string>
 </resources>

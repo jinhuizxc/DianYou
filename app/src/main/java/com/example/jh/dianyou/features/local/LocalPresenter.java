@@ -63,6 +63,32 @@ public class LocalPresenter extends YaRxPresenter<LocalView> {
 
     public void getDevice() {
         Log.e(TAG, "getDevice 方法执行");
+        showMessageNum();
+    }
+
+    // 获取信息数量
+    private void showMessageNum() {
+//        addUtilDestroy(
+//                messageRepo.getMessageCount()
+//                        .subscribe(new DefaultSubscriber<Integer>() {
+//                            @Override
+//                            public void onCompleted() {
+//
+//                            }
+//
+//                            @Override
+//                            public void onError(Throwable e) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onNext(Integer integer) {
+//                                getView().showMessageRead(integer.intValue());
+//                                Log.e(TAG, "获取消息红点数量 =" + integer.intValue());
+//                            }
+//                        })
+//        );
+        getView().showMessageRead(120);
     }
 
     public void getLocation() {

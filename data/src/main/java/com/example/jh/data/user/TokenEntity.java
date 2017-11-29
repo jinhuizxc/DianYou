@@ -8,9 +8,9 @@ import com.example.jh.data.entity.BaseEntity;
  */
 public class TokenEntity extends BaseEntity {
 
-        private String token;
-        private String alias;
-        private String user_nick;
+    private String token;
+    private String alias;
+    private String user_nick;
 
     public String getAlias() {
         return alias;
@@ -29,11 +29,19 @@ public class TokenEntity extends BaseEntity {
     }
 
     public String getToken() {
-            return token;
-        }
+        return token;
+    }
 
-        public void setToken(String token) {
-            this.token = token;
-        }
+    public void setToken(String token) {
+        this.token = token;
+    }
 
+    @Override
+    public String toString() {
+        return "TokenEntity{" +
+                "token='" + token + '\'' +
+                ", alias='" + alias + '\'' +
+                ", user_nick='" + user_nick + '\'' +
+                '}';
+    }
 }

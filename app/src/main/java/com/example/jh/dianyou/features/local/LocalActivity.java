@@ -66,7 +66,7 @@ import butterknife.OnClick;
  * 获取当前位置，
  * 获取手表实时位置
  *
- * 可以考虑数据库了！
+ * 可以考虑数据库了！ 把这个项目写完可以考虑离开了。
  */
 
 public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, LocalComponent> implements LocalView, AMapLocationListener {
@@ -284,9 +284,18 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 
     }
 
+    /**
+     * 测试消息数量达到100以上不显示的问题！
+     * @param count
+     */
     @Override
     public void showMessageRead(int count) {
-
+        if (count > 0) {
+            tvMessageNum.setVisibility(View.VISIBLE);
+            tvMessageNum.setText(count + "");
+        } else {
+            tvMessageNum.setVisibility(View.GONE);
+        }
     }
 
     @Override

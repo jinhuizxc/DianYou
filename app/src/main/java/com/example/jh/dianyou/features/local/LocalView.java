@@ -33,6 +33,7 @@ public interface LocalView extends LoadDataView {
     void tiaozhaun();
 
     void showRead(int count);
+    // 显示信息
     void showMessageRead(int count);
     void setPhoneNumber(String phone);
 
