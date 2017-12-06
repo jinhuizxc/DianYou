@@ -28,6 +28,10 @@
     <!--用于申请获取蓝牙信息进行室内定位-->
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- 语音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 保存资源到SD卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".AndroidApplication"
@@ -68,8 +72,8 @@
         <activity android:name=".features.adddevice.scan.ScanActivity"/>
         <activity android:name=".features.manager.ManagerActivity"/>
         <activity android:name=".features.manager.disturb.DisturbActivity"/>
-
-
+        <activity android:name=".features.talk.TalkActivity"/>
+        <activity android:name=".features.message.MessageActivity"/>
 
         <!--配置极光推送-->
 

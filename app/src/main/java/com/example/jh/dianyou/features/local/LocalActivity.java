@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -45,7 +46,9 @@ import com.example.jh.dianyou.features.adddevice.AddDeviceActivity;
 import com.example.jh.dianyou.features.fencelist.FenceListActivity;
 import com.example.jh.dianyou.features.history.HistoryActivity;
 import com.example.jh.dianyou.features.manager.ManagerActivity;
+import com.example.jh.dianyou.features.message.MessageActivity;
 import com.example.jh.dianyou.features.mine.my.MineActivity;
+import com.example.jh.dianyou.features.talk.TalkActivity;
 import com.example.jh.dianyou.utils.PreferencesUtils;
 import com.example.jh.dianyou.utils.T;
 import com.example.jh.dianyou.view.activity.BaseActivity;
@@ -152,9 +155,12 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 
 
         // 请求定位权限，声明mLocationOption对象
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
             return;
         }
 
@@ -435,7 +441,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 //                startActivity(new Intent(getActivity(), RecordActivity.class));
                 break;
             case R.id.iv_talk:
-//                startActivity(new Intent(LocalActivity.this, TalkActivity.class));
+                startActivity(new Intent(LocalActivity.this, TalkActivity.class));
                 break;
             case R.id.iv_photo:
                 //startActivity(new Intent(getActivity(), TakePhotoActivity.class));
@@ -471,7 +477,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
                 mPresenter.getMylocation();
                 break;
             case R.id.iv_message:
-//                startActivity(new Intent(LocalActivity.this, MessageActivity.class));
+                startActivity(new Intent(LocalActivity.this, MessageActivity.class));
                 break;
             case R.id.iv_find:
 //                startActivity(new Intent(LocalActivity.this, FindActivity.class));
@@ -501,6 +507,12 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
         return super.dispatchTouchEvent(ev);
     }
 
+
+    // 请求权限后执行
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 
     long waitTime = 2000;
     long touchTime = 0;

@@ -28,7 +28,9 @@ import com.example.jh.dianyou.features.local.LocalComponent;
 import com.example.jh.dianyou.features.login.UserComponent;
 import com.example.jh.dianyou.features.manager.ManagerComponent;
 import com.example.jh.dianyou.features.manager.disturb.DisturbComponent;
+import com.example.jh.dianyou.features.message.MessageComponent;
 import com.example.jh.dianyou.features.mine.my.MineComponent;
+import com.example.jh.dianyou.features.talk.TalkComponent;
 
 import javax.inject.Singleton;
 
@@ -57,4 +59,8 @@ public interface ApplicationComponent {
     ManagerComponent managerComponent(ActivityModule activityModule);
 
     DisturbComponent disturbComponent(ActivityModule activityModule);
+
+    TalkComponent talkComponent(ActivityModule activityModule);
+
+    MessageComponent messageComponent(ActivityModule activityModule);
 }

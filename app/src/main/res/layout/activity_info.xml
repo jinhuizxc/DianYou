@@ -1,0 +1,261 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.jh.dianyou.features.message.MessageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg_cloud"
+        android:orientation="vertical"
+        tools:context="com.boatchina.imerit.app.features.message.InfoFragment">
+
+        <include layout="@layout/toolbar" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_message_user"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="56dp"
+            android:clickable="true"
+            app:cardBackgroundColor="@color/alpha"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@mipmap/ic_message_user"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="12dp"
+                    android:text="提醒消息"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_little"
+                    app:layout_constraintLeft_toRightOf="@+id/imageView19"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="8dp"
+                    android:text="收到设备发送的提醒信息，低电量提示，围栏提醒"
+                    android:textColor="@color/tv_gray"
+                    android:textSize="@dimen/tv_min"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toRightOf="@+id/imageView19"
+                    app:layout_constraintRight_toLeftOf="@+id/imageView110"
+
+                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                <ImageView
+                    android:id="@+id/imageView110"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="27dp"
+                    android:src="@mipmap/btn_right"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/iv_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="26dp"
+                    android:background="@mipmap/ic_red"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintRight_toLeftOf="@+id/imageView110"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_message_system"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:visibility="visible"
+            app:cardBackgroundColor="@color/alpha"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@mipmap/ic_message_system"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:text="公告"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_little"
+                    app:layout_constraintLeft_toRightOf="@+id/textView22"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="25dp"
+                    android:text="系统发送的消息推送"
+                    android:textColor="@color/tv_gray"
+                    android:textSize="@dimen/tv_min"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toRightOf="@+id/textView22"
+                    app:layout_constraintRight_toLeftOf="@+id/textView23"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                <ImageView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="27dp"
+                    android:src="@mipmap/btn_right"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <!--重复的布局，去掉-->
+        <!--<android.support.v7.widget.CardView-->
+        <!--android:id="@+id/cv_message"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_marginStart="20dp"-->
+        <!--android:layout_marginEnd="20dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:clickable="true"-->
+        <!--android:visibility="visible"-->
+        <!--app:cardBackgroundColor="@color/alpha"-->
+        <!--app:cardCornerRadius="10dp"-->
+        <!--app:cardElevation="0dp">-->
+
+        <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+
+        <!--android:layout_height="match_parent">-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/textView32"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="12dp"-->
+        <!--android:layout_marginTop="25dp"-->
+        <!--android:src="@mipmap/ic_message_msg"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textView31"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="25dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="短信消息"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="@dimen/tv_little"-->
+        <!--app:layout_constraintLeft_toRightOf="@+id/textView32"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textView30"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="3dp"-->
+        <!--android:layout_marginStart="25dp"-->
+        <!--android:layout_marginEnd="32dp"-->
+        <!--android:text="收到设备发送的提醒信息，低电量提示，围栏提醒"-->
+        <!--android:textColor="@color/tv_gray"-->
+        <!--android:textSize="@dimen/tv_min"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintLeft_toRightOf="@+id/textView32"-->
+        <!--app:layout_constraintRight_toLeftOf="@+id/textView33"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/textView31" />-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/textView33"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="16dp"-->
+        <!--android:layout_marginTop="27dp"-->
+        <!--android:src="@mipmap/btn_right"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/iv_count_2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginTop="26dp"-->
+        <!--android:background="@mipmap/ic_red"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="12sp"-->
+        <!--android:textColor="@color/white"-->
+        <!--app:layout_constraintRight_toLeftOf="@+id/textView33"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--</android.support.constraint.ConstraintLayout>-->
+
+
+        <!--</android.support.v7.widget.CardView>-->
+
+    </LinearLayout>
+
+</FrameLayout>

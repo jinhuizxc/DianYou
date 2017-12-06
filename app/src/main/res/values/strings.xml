@@ -88,7 +88,7 @@
     <string name="desc_set_nickname">设置名称</string>
     <string name="desc_set_number">设置号码</string>
     <string name="title_local">定位</string>
-    <string name="title_message">消息</string>
+    <string name="title_message">消息提醒</string>
     <string name="title_find">发现</string>
     <string name="title_mine">我的</string>
     <string name="title_talkback">语音对讲</string>
@@ -233,4 +233,5 @@
     <string name="setting_sos">设置SOS号码</string>
     <string name="title_disturb">免打扰设置</string>
     <string name="againpassword_no_null">确认密码不能为空</string>
+    <string name="title_talk">语音对讲</string>
 </resources>
