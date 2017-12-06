@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -403,7 +404,7 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
         switch (view.getId()) {
             case R.id.iv_add_device:
                 mPresenter.addDevice();
-                return;
+                break;
             case R.id.iv_setting:
                 if (ishide) {
                     ObjectAnimator.ofFloat(llFlow, "translationX", 0, -llFlow.getMeasuredWidth()).setDuration(500).start();
@@ -412,10 +413,20 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
                     ObjectAnimator.ofFloat(llFlow, "translationX", -llFlow.getMeasuredWidth(), llFlow.getMeasuredWidth()).setDuration(500).start();
                     ishide = true;
                 }
-                return;
+                break;
             case R.id.iv_me:
                 startActivity(new Intent(LocalActivity.this, MineActivity.class));
+                break;
+            case R.id.iv_phone:
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
                 return;
+            }
+                Intent intent = new Intent(
+                        Intent.ACTION_CALL,
+                        Uri.parse("tel:" + "10086"));
+                startActivity(intent);
+            break;
         }
         /**
          * 在进入下面的界面需要绑定设备！

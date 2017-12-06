@@ -60,14 +60,11 @@ public class TalkActivity extends BaseActivity<TalkView, TalkPresenter, TalkComp
 //        mAdapter = new RecoderAdapter(TalkActivity.this);
 //        mListView.setAdapter(mAdapter);
 
-//        // 允许录音的权限！
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED
-//                || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-//            return;
-//        }
+        // 允许录音的权限！
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 1);
+            return;
+        }
 
         // 开始录音
         mAudioRecorderButton.setFinishRecorderCallBack(new AudioRecorderButton.AudioFinishRecorderCallBack() {
@@ -103,28 +100,6 @@ public class TalkActivity extends BaseActivity<TalkView, TalkPresenter, TalkComp
     protected void injectDependencies(TalkComponent component) {
         component.inject(this);
     }
-
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        if (requestCode == 1) {
-//            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                Log.e(TAG, "onRequestPermissionsResult 方法执行");
-//                // Permission Granted
-//                mAudioRecorderButton.setFinishRecorderCallBack(new AudioRecorderButton.AudioFinishRecorderCallBack() {
-//
-//                    public void onFinish(float seconds, String filePath) {
-//
-////                        long l = mPresenter.saveTheVoice((int) seconds, filePath);
-////                        mPresenter.uploadData(filePath, l);
-//                    }
-//                });
-//            } else {
-//                // Permission Denied
-//            }
-//        }
-//    }
 
 
 
