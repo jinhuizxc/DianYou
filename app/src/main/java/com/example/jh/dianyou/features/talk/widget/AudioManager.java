@@ -3,6 +3,7 @@ package com.example.jh.dianyou.features.talk.widget;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.UUID;
@@ -116,12 +117,33 @@ public class AudioManager {
      * @time 2016/6/25 9:50
      */
     public void release() {
-        mMediaRecorder.setOnErrorListener(null);
-        mMediaRecorder.setOnInfoListener(null);
-        mMediaRecorder.setPreviewDisplay(null);
-        mMediaRecorder.stop();
-        mMediaRecorder.reset();
+        if (mMediaRecorder != null) {
+            stopRecording();
+        }
+//        mMediaRecorder.setOnErrorListener(null);
+//        mMediaRecorder.setOnInfoListener(null);
+//        mMediaRecorder.setPreviewDisplay(null);
+//        mMediaRecorder.stop();
+//        mMediaRecorder.reset();
+//        mMediaRecorder = null;
+    }
+
+    private void stopRecording() {
+        // 先判断recorder 是否是stop状态再stop，报错就是recorder调用stop的时候出错的
+        try {
+            //下面三个参数必须加，不加的话会奔溃，在mediarecorder.stop();
+            //报错为：RuntimeException:stop failed
+            mMediaRecorder.setOnErrorListener(null);
+            mMediaRecorder.setOnInfoListener(null);
+            mMediaRecorder.setPreviewDisplay(null);
+            mMediaRecorder.stop();
+        } catch (Exception e) {
+            // TODO: handle exception
+            Log.e("Exception", Log.getStackTraceString(e));
+        }
+        mMediaRecorder.release();
         mMediaRecorder = null;
+
     }
 
     /**

@@ -2,9 +2,12 @@ package com.example.jh.dianyou.features.talktest;
 
 import android.app.Service;
 import android.content.Intent;
+import android.media.MediaRecorder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+
+import com.example.jh.dianyou.features.talk.widget.AudioManager;
 
 /**
  * Created by jinhui on 2017/12/7.
@@ -12,6 +15,8 @@ import android.util.Log;
 
 public class RecordingService extends Service {
 
+    //录音管理工具类
+    private AudioManager mAudioManager;
 
     private static final String TAG = RecordingService.class.getSimpleName();
 
@@ -24,6 +29,9 @@ public class RecordingService extends Service {
     }
 
     private void startRecording() {
+        // 配置录音配置
+        mAudioManager = AudioManager.getInstance();
+        mAudioManager.prepareAudio();
         Log.e(TAG, "startRecording");
     }
 

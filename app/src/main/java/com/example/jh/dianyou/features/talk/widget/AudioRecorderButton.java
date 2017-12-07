@@ -139,6 +139,7 @@ public class AudioRecorderButton extends AppCompatButton {
         super(context, attrs, defStyleAttr);
     }
 
+    // 控件的触摸事件
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //获取TouchEvent状态

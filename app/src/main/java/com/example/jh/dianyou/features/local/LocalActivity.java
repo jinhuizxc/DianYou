@@ -453,8 +453,8 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 //                startActivity(new Intent(getActivity(), RecordActivity.class));
                 break;
             case R.id.iv_talk:
-//                startActivity(new Intent(LocalActivity.this, TalkActivity.class));
-                startActivity(new Intent(LocalActivity.this, TestTalkActivity.class));
+                startActivity(new Intent(LocalActivity.this, TalkActivity.class));
+//                startActivity(new Intent(LocalActivity.this, TestTalkActivity.class));
                 break;
             case R.id.iv_photo:
                 //startActivity(new Intent(getActivity(), TakePhotoActivity.class));
