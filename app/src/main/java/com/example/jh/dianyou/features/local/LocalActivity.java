@@ -50,6 +50,7 @@ import com.example.jh.dianyou.features.manager.ManagerActivity;
 import com.example.jh.dianyou.features.message.MessageActivity;
 import com.example.jh.dianyou.features.mine.my.MineActivity;
 import com.example.jh.dianyou.features.talk.TalkActivity;
+import com.example.jh.dianyou.features.talktest.TestTalkActivity;
 import com.example.jh.dianyou.utils.PreferencesUtils;
 import com.example.jh.dianyou.utils.T;
 import com.example.jh.dianyou.view.activity.BaseActivity;
@@ -452,7 +453,8 @@ public class LocalActivity extends BaseActivity<LocalView, LocalPresenter, Local
 //                startActivity(new Intent(getActivity(), RecordActivity.class));
                 break;
             case R.id.iv_talk:
-                startActivity(new Intent(LocalActivity.this, TalkActivity.class));
+//                startActivity(new Intent(LocalActivity.this, TalkActivity.class));
+                startActivity(new Intent(LocalActivity.this, TestTalkActivity.class));
                 break;
             case R.id.iv_photo:
                 //startActivity(new Intent(getActivity(), TakePhotoActivity.class));

@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@mipmap/bg_cloud"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_recorder" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bar_height"
+        android:elevation="1dp">
+
+        <TextView
+            android:id="@+id/tv_device_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_mid" />
+    </FrameLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ListView
+            android:id="@+id/id_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:paddingTop="6dp"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <com.example.jh.dianyou.features.talktest.TestAudioRecorderButton
+                android:id="@+id/id_recorder_button"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/btn_recorder"
+                android:gravity="top|center_horizontal"
+                android:textColor="#fefefe"
+                android:textSize="@dimen/tv_min"/>
+
+
+        </FrameLayout>
+
+
+        <!--<FrameLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_centerHorizontal="true">
+
+             <TextView
+                 android:id="@+id/recorder_text"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/str_recorder_normal"
+                 android:textColor="#fefefe"
+                 android:layout_marginTop="70dp"/>
+
+         </FrameLayout>-->
+
+
+        <!-- <View
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:background="#ccc" >
+         </View>-->
+    </RelativeLayout>
+
+</LinearLayout>

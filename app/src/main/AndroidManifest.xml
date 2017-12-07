@@ -39,21 +39,27 @@
     <application
         android:name=".AndroidApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon= "@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.activity.WelcomeActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity android:name=".features.local.LocalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".features.local.LocalActivity"/>
         <activity
             android:name=".features.login.LoginActivity"
             android:label="@string/title_activity_login" />
@@ -77,11 +83,11 @@
         <activity android:name=".features.manager.disturb.DisturbActivity"/>
         <activity android:name=".features.talk.TalkActivity"/>
         <activity android:name=".features.message.MessageActivity"/>
-
+        <activity android:name=".features.talktest.TestTalkActivity"/>
         <!--配置极光推送-->
 
 
-
+        <service android:name=".features.talktest.RecordingService" />
 
 
     </application>

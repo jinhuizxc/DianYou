@@ -3,6 +3,7 @@ package com.example.jh.dianyou.features.talk;
 import com.example.jh.data.PerActivity;
 import com.example.jh.data.device.DeviceModule;
 import com.example.jh.dianyou.di.modules.ActivityModule;
+import com.example.jh.dianyou.features.talktest.TestTalkActivity;
 
 import dagger.Subcomponent;
 
@@ -14,4 +15,6 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {ActivityModule.class, DeviceModule.class})
 public interface TalkComponent{
     void inject(TalkActivity talkActivity);
+
+    void inject(TestTalkActivity testTalkActivity);
 }
