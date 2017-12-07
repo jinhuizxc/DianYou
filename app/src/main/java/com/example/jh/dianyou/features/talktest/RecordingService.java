@@ -17,6 +17,7 @@ public class RecordingService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.e(TAG, "onStartCommand————————>");
         startRecording();
 
         return super.onStartCommand(intent, flags, startId);

@@ -70,7 +70,7 @@ public class TestTalkActivity extends BaseActivity<TalkView, TalkPresenter, Talk
         Intent intent = new Intent(this, RecordingService.class);
         Log.e(TAG, "intent =" + intent);
 
-
+        startService(intent);
     }
 
     @Override
